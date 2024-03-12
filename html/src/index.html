@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+</head>
+<body>
+	<div>
+		<header>Project: New Project</header>
+		<div>
+			<h2>WEB</h2>
+			<ul>
+				<li>[ ] <a href="1-Home.html">Home</a></li>
+			</ul>
+		</div>
+		<footer></footer>
+	</div>
+	<style>
+		@media (prefers-color-scheme: light) {
+			:root {
+				--a: #ffffff;
+				--b: #999999;
+				--c: #777777;
+				--d: #555555;
+				--e: #333333;
+				--f: #111111;
+				--g: #000000;
+				--sh-1: rgba(0, 0, 0, .1);
+				--sh-2: rgba(0, 0, 0, .2);
+				--sh-3: rgba(0, 0, 0, .3);
+				--high: #ff0000;
+			}
+		}
+
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--a: #111111;
+				--b: #333333;
+				--c: #555555;
+				--d: #777777;
+				--e: #999999;
+				--f: #bbbbbb;
+				--g: #ffffff;
+				--sh-1: rgba(255, 255, 255, .1);
+				--sh-2: rgba(255, 255, 255, .2);
+				--sh-3: rgba(255, 255, 255, .3);
+				--high: #ff0000;
+			}
+		}
+
+		* {
+			box-sizing: border-box;
+			color: var(--f);
+		}
+
+		html, body {
+			margin: 0;
+			padding: 0;
+			max-width: 100%;
+			font-family: "Helvetica Neue", Helvetica, 'Arial', sans-serif;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		}
+
+		body {
+			background-color: var(--a);
+		}
+
+		body>div {
+			display: flex;
+			flex-direction: column;
+		}
+
+		body>div>div {
+			padding: 0 30px;
+			flex-grow: 1;
+		}
+
+		a {
+			outline: none;
+			text-decoration: none;
+		}
+
+		a:hover {
+			opacity: .5;
+		}
+
+		img {
+			vertical-align: middle;
+		}
+
+		header {
+			font-size: 1.1em;
+			background-color: var(--a);
+			padding: 20px 30px;
+			box-shadow: 0 0 10px 3px var(--sh-1);
+			font-weight: 900;
+			font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		ul>li {
+			padding: 0;
+			margin: 5px 0;
+			list-style: none;
+			font-family: 'Courier New', Courier, monospace;
+		}		
+		ul>li>ul {
+			padding-left: 2.2rem;
+		}
+		li[h] a {
+			color: var(--high);
+		}	
+	</style>
+</body>
+</html>

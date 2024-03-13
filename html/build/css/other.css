@@ -1,31 +1,50 @@
 @charset "UTF-8";
 .form label {
-  color: var(--g5);
+  color: var(--g6);
   text-align: left;
   font-size: 1rem;
   line-height: 2rem;
   font-weight: 300;
+  padding-left: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+.form label span {
+  color: #ff0000;
 }
 
 /*
 	Text
-	<div class="text"><label for=""></label><input id="" type="text" placeholder="Enter text here" value=""></div>
+	<div class="text"><label for=""></label><input id="" type="text" placeholder="Enter text here" value=""><div class="errors"></div></div>
 */
 .form .text input {
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   outline: none;
   width: 100%;
-  border: var(--px) solid var(--g2);
-  border-radius: 0;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
   background: rgba(255, 255, 255, 0.8);
   color: var(--g5);
   padding: 0.66rem 1rem;
   line-height: 1rem;
   font-size: 1rem;
   font-weight: 300;
+  box-shadow: 0 0 1rem 0.1rem var(--c7);
+}
+.form .text input.error {
+  border-color: red;
 }
 
-.form .text.center input {
-  text-align: center;
+.form .text .errors {
+  display: none;
+  font-size: 0.6rem;
+  color: var(--c3);
+}
+
+.form .text input.error + .errors {
+  display: block;
 }
 
 .form .text input::-moz-placeholder {
@@ -51,14 +70,17 @@
   outline: none;
   width: 100%;
   height: 10rem;
-  border: var(--px) solid var(--g2);
-  border-radius: 0;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
   background: rgba(255, 255, 255, 0.8);
   color: var(--g5);
   padding: 0.66rem 1rem;
   line-height: 1rem;
   font-size: 1rem;
   font-weight: 300;
+}
+.form .text textarea.error {
+  border-color: red;
 }
 
 .form .text textarea::-moz-placeholder {
@@ -78,7 +100,7 @@
 
 /*
 	Select
-	<div class="select"><label for=""></label><select id=""><option>- Выберите вариант -</option></select></div>
+	<div class="select"><label for=""></label><select id=""><option>- Выберите вариант -</option></select><div class="select_arrow"></div></div>
 */
 .form .select {
   position: relative;
@@ -88,14 +110,14 @@
 
 .form .select .select_arrow {
   position: absolute;
-  bottom: 1.33rem;
+  bottom: 1.1rem;
   right: 1rem;
   width: 0;
   height: 0;
   pointer-events: none;
   border-style: solid;
   border-width: 0.5rem 0.33rem 0 0.33rem;
-  border-color: var(--g2) transparent transparent transparent;
+  border-color: var(--c3) transparent transparent transparent;
 }
 
 .form .select select {
@@ -104,8 +126,8 @@
   cursor: pointer;
   padding: 0.66rem 1rem;
   outline: 0;
-  border: var(--px) solid var(--g2);
-  border-radius: 0;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
   background: rgba(255, 255, 255, 0.8);
   color: var(--g5);
   font-size: 1rem;
@@ -113,14 +135,6 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-}
-
-.form .select.gold select {
-  border-color: var(--color-a);
-  border-radius: 0.5rem;
-  border-width: 1.3rem;
-  padding: 1rem 1rem;
-  height: 3.3rem;
 }
 
 .form .select select::-ms-expand {
@@ -176,7 +190,8 @@
   height: 1.3rem;
   width: 1.3rem;
   background: #fff;
-  border: var(--px) solid var(--g2);
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
 }
 
 .form .control-radio .control_indicator {
@@ -253,9 +268,14 @@
   border-color: var(--g2);
 }
 
-/*
+/************************
+
+	NUMBER
+	-----
+	Usage:
 	<div class="numeric"><div class="control-numeric"><input type="text" name="quantity" value="1"></div><div class="dec"></div><div class="inc"></div></div>
-*/
+
+************************/
 .form .numeric {
   display: flex;
   border: var(--px) solid var(--g2);
@@ -306,4 +326,413 @@
   border: none;
   text-align: center;
   width: 4.3rem;
+}
+.form .numeric > .control-numeric > input.error {
+  border-color: red;
+}
+
+/************************
+
+	PHONE
+	-----
+	Usage:
+	<div class="phone">
+		<label for="quiz-phone">Phone</label>
+		<div>
+			<div>
+				<div class="selector">
+					<div class="code">+34</div>
+					<div class="arrow"></div>
+				</div>
+				<ul>
+					<li data-dial-code="93" data-country-code="af"><span>Afghanistan (‫افغانستان‬‎)</span><span class="iti__dial-code">+93</span></li>
+					<li data-dial-code="355" data-country-code="al"><span>Albania (Shqipëri)</span><span class="iti__dial-code">+355</span></li>
+					<li data-dial-code="213" data-country-code="dz"><span>Algeria (‫الجزائر‬‎)</span><span class="iti__dial-code">+213</span></li>
+					<li data-dial-code="1" data-country-code="as"><span>American Samoa</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="376" data-country-code="ad"><span>Andorra</span><span class="iti__dial-code">+376</span></li>
+					<li data-dial-code="244" data-country-code="ao"><span>Angola</span><span class="iti__dial-code">+244</span></li>
+					<li data-dial-code="1" data-country-code="ai"><span>Anguilla</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="ag"><span>Antigua and Barbuda</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="54" data-country-code="ar"><span>Argentina</span><span class="iti__dial-code">+54</span></li>
+					<li data-dial-code="374" data-country-code="am"><span>Armenia (Հայաստան)</span><span class="iti__dial-code">+374</span></li>
+					<li data-dial-code="297" data-country-code="aw"><span>Aruba</span><span class="iti__dial-code">+297</span></li>
+					<li data-dial-code="247" data-country-code="ac"><span>Ascension Island</span><span class="iti__dial-code">+247</span></li>
+					<li data-dial-code="61" data-country-code="au"><span>Australia</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="43" data-country-code="at"><span>Austria (Österreich)</span><span class="iti__dial-code">+43</span></li>
+					<li data-dial-code="994" data-country-code="az"><span>Azerbaijan (Azərbaycan)</span><span class="iti__dial-code">+994</span></li>
+					<li data-dial-code="1" data-country-code="bs"><span>Bahamas</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="973" data-country-code="bh"><span>Bahrain (‫البحرين‬‎)</span><span class="iti__dial-code">+973</span></li>
+					<li data-dial-code="880" data-country-code="bd"><span>Bangladesh (বাংলাদেশ)</span><span class="iti__dial-code">+880</span></li>
+					<li data-dial-code="1" data-country-code="bb"><span>Barbados</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="375" data-country-code="by"><span>Belarus (Беларусь)</span><span class="iti__dial-code">+375</span></li>
+					<li data-dial-code="32" data-country-code="be"><span>Belgium (België)</span><span class="iti__dial-code">+32</span></li>
+					<li data-dial-code="501" data-country-code="bz"><span>Belize</span><span class="iti__dial-code">+501</span></li>
+					<li data-dial-code="229" data-country-code="bj"><span>Benin (Bénin)</span><span class="iti__dial-code">+229</span></li>
+					<li data-dial-code="1" data-country-code="bm"><span>Bermuda</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="975" data-country-code="bt"><span>Bhutan (འབྲུག)</span><span class="iti__dial-code">+975</span></li>
+					<li data-dial-code="591" data-country-code="bo"><span>Bolivia</span><span class="iti__dial-code">+591</span></li>
+					<li data-dial-code="387" data-country-code="ba"><span>Bosnia and Herzegovina (Босна и Херцеговина)</span><span class="iti__dial-code">+387</span></li>
+					<li data-dial-code="267" data-country-code="bw"><span>Botswana</span><span class="iti__dial-code">+267</span></li>
+					<li data-dial-code="55" data-country-code="br"><span>Brazil (Brasil)</span><span class="iti__dial-code">+55</span></li>
+					<li data-dial-code="246" data-country-code="io"><span>British Indian Ocean Territory</span><span class="iti__dial-code">+246</span></li>
+					<li data-dial-code="1" data-country-code="vg"><span>British Virgin Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="673" data-country-code="bn"><span>Brunei</span><span class="iti__dial-code">+673</span></li>
+					<li data-dial-code="359" data-country-code="bg"><span>Bulgaria (България)</span><span class="iti__dial-code">+359</span></li>
+					<li data-dial-code="226" data-country-code="bf"><span>Burkina Faso</span><span class="iti__dial-code">+226</span></li>
+					<li data-dial-code="257" data-country-code="bi"><span>Burundi (Uburundi)</span><span class="iti__dial-code">+257</span></li>
+					<li data-dial-code="855" data-country-code="kh"><span>Cambodia (កម្ពុជា)</span><span class="iti__dial-code">+855</span></li>
+					<li data-dial-code="237" data-country-code="cm"><span>Cameroon (Cameroun)</span><span class="iti__dial-code">+237</span></li>
+					<li data-dial-code="1" data-country-code="ca"><span>Canada</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="238" data-country-code="cv"><span>Cape Verde (Kabu Verdi)</span><span class="iti__dial-code">+238</span></li>
+					<li data-dial-code="599" data-country-code="bq"><span>Caribbean Netherlands</span><span class="iti__dial-code">+599</span></li>
+					<li data-dial-code="1" data-country-code="ky"><span>Cayman Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="236" data-country-code="cf"><span>Central African Republic (République centrafricaine)</span><span class="iti__dial-code">+236</span></li>
+					<li data-dial-code="235" data-country-code="td"><span>Chad (Tchad)</span><span class="iti__dial-code">+235</span></li>
+					<li data-dial-code="56" data-country-code="cl"><span>Chile</span><span class="iti__dial-code">+56</span></li>
+					<li data-dial-code="86" data-country-code="cn"><span>China (中国)</span><span class="iti__dial-code">+86</span></li>
+					<li data-dial-code="61" data-country-code="cx"><span>Christmas Island</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="61" data-country-code="cc"><span>Cocos (Keeling) Islands</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="57" data-country-code="co"><span>Colombia</span><span class="iti__dial-code">+57</span></li>
+					<li data-dial-code="269" data-country-code="km"><span>Comoros (‫جزر القمر‬‎)</span><span class="iti__dial-code">+269</span></li>
+					<li data-dial-code="243" data-country-code="cd"><span>Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)</span><span class="iti__dial-code">+243</span></li>
+					<li data-dial-code="242" data-country-code="cg"><span>Congo (Republic) (Congo-Brazzaville)</span><span class="iti__dial-code">+242</span></li>
+					<li data-dial-code="682" data-country-code="ck"><span>Cook Islands</span><span class="iti__dial-code">+682</span></li>
+					<li data-dial-code="506" data-country-code="cr"><span>Costa Rica</span><span class="iti__dial-code">+506</span></li>
+					<li data-dial-code="225" data-country-code="ci"><span>Côte d’Ivoire</span><span class="iti__dial-code">+225</span></li>
+					<li data-dial-code="385" data-country-code="hr"><span>Croatia (Hrvatska)</span><span class="iti__dial-code">+385</span></li>
+					<li data-dial-code="53" data-country-code="cu"><span>Cuba</span><span class="iti__dial-code">+53</span></li>
+					<li data-dial-code="599" data-country-code="cw"><span>Curaçao</span><span class="iti__dial-code">+599</span></li>
+					<li data-dial-code="357" data-country-code="cy"><span>Cyprus (Κύπρος)</span><span class="iti__dial-code">+357</span></li>
+					<li data-dial-code="420" data-country-code="cz"><span>Czech Republic (Česká republika)</span><span class="iti__dial-code">+420</span></li>
+					<li data-dial-code="45" data-country-code="dk"><span>Denmark (Danmark)</span><span class="iti__dial-code">+45</span></li>
+					<li data-dial-code="253" data-country-code="dj"><span>Djibouti</span><span class="iti__dial-code">+253</span></li>
+					<li data-dial-code="1" data-country-code="dm"><span>Dominica</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="do"><span>Dominican Republic (República Dominicana)</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="593" data-country-code="ec"><span>Ecuador</span><span class="iti__dial-code">+593</span></li>
+					<li data-dial-code="20" data-country-code="eg"><span>Egypt (‫مصر‬‎)</span><span class="iti__dial-code">+20</span></li>
+					<li data-dial-code="503" data-country-code="sv"><span>El Salvador</span><span class="iti__dial-code">+503</span></li>
+					<li data-dial-code="240" data-country-code="gq"><span>Equatorial Guinea (Guinea Ecuatorial)</span><span class="iti__dial-code">+240</span></li>
+					<li data-dial-code="291" data-country-code="er"><span>Eritrea</span><span class="iti__dial-code">+291</span></li>
+					<li data-dial-code="372" data-country-code="ee"><span>Estonia (Eesti)</span><span class="iti__dial-code">+372</span></li>
+					<li data-dial-code="268" data-country-code="sz"><span>Eswatini</span><span class="iti__dial-code">+268</span></li>
+					<li data-dial-code="251" data-country-code="et"><span>Ethiopia</span><span class="iti__dial-code">+251</span></li>
+					<li data-dial-code="500" data-country-code="fk"><span>Falkland Islands (Islas Malvinas)</span><span class="iti__dial-code">+500</span></li>
+					<li data-dial-code="298" data-country-code="fo"><span>Faroe Islands (Føroyar)</span><span class="iti__dial-code">+298</span></li>
+					<li data-dial-code="679" data-country-code="fj"><span>Fiji</span><span class="iti__dial-code">+679</span></li>
+					<li data-dial-code="358" data-country-code="fi"><span>Finland (Suomi)</span><span class="iti__dial-code">+358</span></li>
+					<li data-dial-code="33" data-country-code="fr"><span>France</span><span class="iti__dial-code">+33</span></li>
+					<li data-dial-code="594" data-country-code="gf"><span>French Guiana (Guyane française)</span><span class="iti__dial-code">+594</span></li>
+					<li data-dial-code="689" data-country-code="pf"><span>French Polynesia (Polynésie française)</span><span class="iti__dial-code">+689</span></li>
+					<li data-dial-code="241" data-country-code="ga"><span>Gabon</span><span class="iti__dial-code">+241</span></li>
+					<li data-dial-code="220" data-country-code="gm"><span>Gambia</span><span class="iti__dial-code">+220</span></li>
+					<li data-dial-code="995" data-country-code="ge"><span>Georgia (საქართველო)</span><span class="iti__dial-code">+995</span></li>
+					<li data-dial-code="49" data-country-code="de"><span>Germany (Deutschland)</span><span class="iti__dial-code">+49</span></li>
+					<li data-dial-code="233" data-country-code="gh"><span>Ghana (Gaana)</span><span class="iti__dial-code">+233</span></li>
+					<li data-dial-code="350" data-country-code="gi"><span>Gibraltar</span><span class="iti__dial-code">+350</span></li>
+					<li data-dial-code="30" data-country-code="gr"><span>Greece (Ελλάδα)</span><span class="iti__dial-code">+30</span></li>
+					<li data-dial-code="299" data-country-code="gl"><span>Greenland (Kalaallit Nunaat)</span><span class="iti__dial-code">+299</span></li>
+					<li data-dial-code="1" data-country-code="gd"><span>Grenada</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="590" data-country-code="gp"><span>Guadeloupe</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="1" data-country-code="gu"><span>Guam</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="502" data-country-code="gt"><span>Guatemala</span><span class="iti__dial-code">+502</span></li>
+					<li data-dial-code="44" data-country-code="gg"><span>Guernsey</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="224" data-country-code="gn"><span>Guinea (Guinée)</span><span class="iti__dial-code">+224</span></li>
+					<li data-dial-code="245" data-country-code="gw"><span>Guinea-Bissau (Guiné Bissau)</span><span class="iti__dial-code">+245</span></li>
+					<li data-dial-code="592" data-country-code="gy"><span>Guyana</span><span class="iti__dial-code">+592</span></li>
+					<li data-dial-code="509" data-country-code="ht"><span>Haiti</span><span class="iti__dial-code">+509</span></li>
+					<li data-dial-code="504" data-country-code="hn"><span>Honduras</span><span class="iti__dial-code">+504</span></li>
+					<li data-dial-code="852" data-country-code="hk"><span>Hong Kong (香港)</span><span class="iti__dial-code">+852</span></li>
+					<li data-dial-code="36" data-country-code="hu"><span>Hungary (Magyarország)</span><span class="iti__dial-code">+36</span></li>
+					<li data-dial-code="354" data-country-code="is"><span>Iceland (Ísland)</span><span class="iti__dial-code">+354</span></li>
+					<li data-dial-code="91" data-country-code="in"><span>India (भारत)</span><span class="iti__dial-code">+91</span></li>
+					<li data-dial-code="62" data-country-code="id"><span>Indonesia</span><span class="iti__dial-code">+62</span></li>
+					<li data-dial-code="98" data-country-code="ir"><span>Iran (‫ایران‬‎)</span><span class="iti__dial-code">+98</span></li>
+					<li data-dial-code="964" data-country-code="iq"><span>Iraq (‫العراق‬‎)</span><span class="iti__dial-code">+964</span></li>
+					<li data-dial-code="353" data-country-code="ie"><span>Ireland</span><span class="iti__dial-code">+353</span></li>
+					<li data-dial-code="44" data-country-code="im"><span>Isle of Man</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="972" data-country-code="il"><span>Israel (‫ישראל‬‎)</span><span class="iti__dial-code">+972</span></li>
+					<li data-dial-code="39" data-country-code="it"><span>Italy (Italia)</span><span class="iti__dial-code">+39</span></li>
+					<li data-dial-code="1" data-country-code="jm"><span>Jamaica</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="81" data-country-code="jp"><span>Japan (日本)</span><span class="iti__dial-code">+81</span></li>
+					<li data-dial-code="44" data-country-code="je"><span>Jersey</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="962" data-country-code="jo"><span>Jordan (‫الأردن‬‎)</span><span class="iti__dial-code">+962</span></li>
+					<li data-dial-code="7" data-country-code="kz"><span>Kazakhstan (Казахстан)</span><span class="iti__dial-code">+7</span></li>
+					<li data-dial-code="254" data-country-code="ke"><span>Kenya</span><span class="iti__dial-code">+254</span></li>
+					<li data-dial-code="686" data-country-code="ki"><span>Kiribati</span><span class="iti__dial-code">+686</span></li>
+					<li data-dial-code="383" data-country-code="xk"><span>Kosovo</span><span class="iti__dial-code">+383</span></li>
+					<li data-dial-code="965" data-country-code="kw"><span>Kuwait (‫الكويت‬‎)</span><span class="iti__dial-code">+965</span></li>
+					<li data-dial-code="996" data-country-code="kg"><span>Kyrgyzstan (Кыргызстан)</span><span class="iti__dial-code">+996</span></li>
+					<li data-dial-code="856" data-country-code="la"><span>Laos (ລາວ)</span><span class="iti__dial-code">+856</span></li>
+					<li data-dial-code="371" data-country-code="lv"><span>Latvia (Latvija)</span><span class="iti__dial-code">+371</span></li>
+					<li data-dial-code="961" data-country-code="lb"><span>Lebanon (‫لبنان‬‎)</span><span class="iti__dial-code">+961</span></li>
+					<li data-dial-code="266" data-country-code="ls"><span>Lesotho</span><span class="iti__dial-code">+266</span></li>
+					<li data-dial-code="231" data-country-code="lr"><span>Liberia</span><span class="iti__dial-code">+231</span></li>
+					<li data-dial-code="218" data-country-code="ly"><span>Libya (‫ليبيا‬‎)</span><span class="iti__dial-code">+218</span></li>
+					<li data-dial-code="423" data-country-code="li"><span>Liechtenstein</span><span class="iti__dial-code">+423</span></li>
+					<li data-dial-code="370" data-country-code="lt"><span>Lithuania (Lietuva)</span><span class="iti__dial-code">+370</span></li>
+					<li data-dial-code="352" data-country-code="lu"><span>Luxembourg</span><span class="iti__dial-code">+352</span></li>
+					<li data-dial-code="853" data-country-code="mo"><span>Macau (澳門)</span><span class="iti__dial-code">+853</span></li>
+					<li data-dial-code="389" data-country-code="mk"><span>North Macedonia (Македонија)</span><span class="iti__dial-code">+389</span></li>
+					<li data-dial-code="261" data-country-code="mg"><span>Madagascar (Madagasikara)</span><span class="iti__dial-code">+261</span></li>
+					<li data-dial-code="265" data-country-code="mw"><span>Malawi</span><span class="iti__dial-code">+265</span></li>
+					<li data-dial-code="60" data-country-code="my"><span>Malaysia</span><span class="iti__dial-code">+60</span></li>
+					<li data-dial-code="960" data-country-code="mv"><span>Maldives</span><span class="iti__dial-code">+960</span></li>
+					<li data-dial-code="223" data-country-code="ml"><span>Mali</span><span class="iti__dial-code">+223</span></li>
+					<li data-dial-code="356" data-country-code="mt"><span>Malta</span><span class="iti__dial-code">+356</span></li>
+					<li data-dial-code="692" data-country-code="mh"><span>Marshall Islands</span><span class="iti__dial-code">+692</span></li>
+					<li data-dial-code="596" data-country-code="mq"><span>Martinique</span><span class="iti__dial-code">+596</span></li>
+					<li data-dial-code="222" data-country-code="mr"><span>Mauritania (‫موريتانيا‬‎)</span><span class="iti__dial-code">+222</span></li>
+					<li data-dial-code="230" data-country-code="mu"><span>Mauritius (Moris)</span><span class="iti__dial-code">+230</span></li>
+					<li data-dial-code="262" data-country-code="yt"><span>Mayotte</span><span class="iti__dial-code">+262</span></li>
+					<li data-dial-code="52" data-country-code="mx"><span>Mexico (México)</span><span class="iti__dial-code">+52</span></li>
+					<li data-dial-code="691" data-country-code="fm"><span>Micronesia</span><span class="iti__dial-code">+691</span></li>
+					<li data-dial-code="373" data-country-code="md"><span>Moldova (Republica Moldova)</span><span class="iti__dial-code">+373</span></li>
+					<li data-dial-code="377" data-country-code="mc"><span>Monaco</span><span class="iti__dial-code">+377</span></li>
+					<li data-dial-code="976" data-country-code="mn"><span>Mongolia (Монгол)</span><span class="iti__dial-code">+976</span></li>
+					<li data-dial-code="382" data-country-code="me"><span>Montenegro (Crna Gora)</span><span class="iti__dial-code">+382</span></li>
+					<li data-dial-code="1" data-country-code="ms"><span>Montserrat</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="212" data-country-code="ma"><span>Morocco (‫المغرب‬‎)</span><span class="iti__dial-code">+212</span></li>
+					<li data-dial-code="258" data-country-code="mz"><span>Mozambique (Moçambique)</span><span class="iti__dial-code">+258</span></li>
+					<li data-dial-code="95" data-country-code="mm"><span>Myanmar (Burma) (မြန်မာ)</span><span class="iti__dial-code">+95</span></li>
+					<li data-dial-code="264" data-country-code="na"><span>Namibia (Namibië)</span><span class="iti__dial-code">+264</span></li>
+					<li data-dial-code="674" data-country-code="nr"><span>Nauru</span><span class="iti__dial-code">+674</span></li>
+					<li data-dial-code="977" data-country-code="np"><span>Nepal (नेपाल)</span><span class="iti__dial-code">+977</span></li>
+					<li data-dial-code="31" data-country-code="nl"><span>Netherlands (Nederland)</span><span class="iti__dial-code">+31</span></li>
+					<li data-dial-code="687" data-country-code="nc"><span>New Caledonia (Nouvelle-Calédonie)</span><span class="iti__dial-code">+687</span></li>
+					<li data-dial-code="64" data-country-code="nz"><span>New Zealand</span><span class="iti__dial-code">+64</span></li>
+					<li data-dial-code="505" data-country-code="ni"><span>Nicaragua</span><span class="iti__dial-code">+505</span></li>
+					<li data-dial-code="227" data-country-code="ne"><span>Niger (Nijar)</span><span class="iti__dial-code">+227</span></li>
+					<li data-dial-code="234" data-country-code="ng"><span>Nigeria</span><span class="iti__dial-code">+234</span></li>
+					<li data-dial-code="683" data-country-code="nu"><span>Niue</span><span class="iti__dial-code">+683</span></li>
+					<li data-dial-code="672" data-country-code="nf"><span>Norfolk Island</span><span class="iti__dial-code">+672</span></li>
+					<li data-dial-code="850" data-country-code="kp"><span>North Korea (조선 민주주의 인민 공화국)</span><span class="iti__dial-code">+850</span></li>
+					<li data-dial-code="1" data-country-code="mp"><span>Northern Mariana Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="47" data-country-code="no"><span>Norway (Norge)</span><span class="iti__dial-code">+47</span></li>
+					<li data-dial-code="968" data-country-code="om"><span>Oman (‫عُمان‬‎)</span><span class="iti__dial-code">+968</span></li>
+					<li data-dial-code="92" data-country-code="pk"><span>Pakistan (‫پاکستان‬‎)</span><span class="iti__dial-code">+92</span></li>
+					<li data-dial-code="680" data-country-code="pw"><span>Palau</span><span class="iti__dial-code">+680</span></li>
+					<li data-dial-code="970" data-country-code="ps"><span>Palestine (‫فلسطين‬‎)</span><span class="iti__dial-code">+970</span></li>
+					<li data-dial-code="507" data-country-code="pa"><span>Panama (Panamá)</span><span class="iti__dial-code">+507</span></li>
+					<li data-dial-code="675" data-country-code="pg"><span>Papua New Guinea</span><span class="iti__dial-code">+675</span></li>
+					<li data-dial-code="595" data-country-code="py"><span>Paraguay</span><span class="iti__dial-code">+595</span></li>
+					<li data-dial-code="51" data-country-code="pe"><span>Peru (Perú)</span><span class="iti__dial-code">+51</span></li>
+					<li data-dial-code="63" data-country-code="ph"><span>Philippines</span><span class="iti__dial-code">+63</span></li>
+					<li data-dial-code="48" data-country-code="pl"><span>Poland (Polska)</span><span class="iti__dial-code">+48</span></li>
+					<li data-dial-code="351" data-country-code="pt"><span>Portugal</span><span class="iti__dial-code">+351</span></li>
+					<li data-dial-code="1" data-country-code="pr"><span>Puerto Rico</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="974" data-country-code="qa"><span>Qatar (‫قطر‬‎)</span><span class="iti__dial-code">+974</span></li>
+					<li data-dial-code="262" data-country-code="re"><span>Réunion (La Réunion)</span><span class="iti__dial-code">+262</span></li>
+					<li data-dial-code="40" data-country-code="ro"><span>Romania (România)</span><span class="iti__dial-code">+40</span></li>
+					<li data-dial-code="7" data-country-code="ru"><span>Russia (Россия)</span><span class="iti__dial-code">+7</span></li>
+					<li data-dial-code="250" data-country-code="rw"><span>Rwanda</span><span class="iti__dial-code">+250</span></li>
+					<li data-dial-code="590" data-country-code="bl"><span>Saint Barthélemy</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="290" data-country-code="sh"><span>Saint Helena</span><span class="iti__dial-code">+290</span></li>
+					<li data-dial-code="1" data-country-code="kn"><span>Saint Kitts and Nevis</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="lc"><span>Saint Lucia</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="590" data-country-code="mf"><span>Saint Martin (Saint-Martin (partie française))</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="508" data-country-code="pm"><span>Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)</span><span class="iti__dial-code">+508</span></li>
+					<li data-dial-code="1" data-country-code="vc"><span>Saint Vincent and the Grenadines</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="685" data-country-code="ws"><span>Samoa</span><span class="iti__dial-code">+685</span></li>
+					<li data-dial-code="378" data-country-code="sm"><span>San Marino</span><span class="iti__dial-code">+378</span></li>
+					<li data-dial-code="239" data-country-code="st"><span>São Tomé and Príncipe (São Tomé e Príncipe)</span><span class="iti__dial-code">+239</span></li>
+					<li data-dial-code="966" data-country-code="sa"><span>Saudi Arabia (‫المملكة العربية السعودية‬‎)</span><span class="iti__dial-code">+966</span></li>
+					<li data-dial-code="221" data-country-code="sn"><span>Senegal (Sénégal)</span><span class="iti__dial-code">+221</span></li>
+					<li data-dial-code="381" data-country-code="rs"><span>Serbia (Србија)</span><span class="iti__dial-code">+381</span></li>
+					<li data-dial-code="248" data-country-code="sc"><span>Seychelles</span><span class="iti__dial-code">+248</span></li>
+					<li data-dial-code="232" data-country-code="sl"><span>Sierra Leone</span><span class="iti__dial-code">+232</span></li>
+					<li data-dial-code="65" data-country-code="sg"><span>Singapore</span><span class="iti__dial-code">+65</span></li>
+					<li data-dial-code="1" data-country-code="sx"><span>Sint Maarten</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="421" data-country-code="sk"><span>Slovakia (Slovensko)</span><span class="iti__dial-code">+421</span></li>
+					<li data-dial-code="386" data-country-code="si"><span>Slovenia (Slovenija)</span><span class="iti__dial-code">+386</span></li>
+					<li data-dial-code="677" data-country-code="sb"><span>Solomon Islands</span><span class="iti__dial-code">+677</span></li>
+					<li data-dial-code="252" data-country-code="so"><span>Somalia (Soomaaliya)</span><span class="iti__dial-code">+252</span></li>
+					<li data-dial-code="27" data-country-code="za"><span>South Africa</span><span class="iti__dial-code">+27</span></li>
+					<li data-dial-code="82" data-country-code="kr"><span>South Korea (대한민국)</span><span class="iti__dial-code">+82</span></li>
+					<li data-dial-code="211" data-country-code="ss"><span>South Sudan (‫جنوب السودان‬‎)</span><span class="iti__dial-code">+211</span></li>
+					<li data-dial-code="34" data-country-code="es"><span>Spain (España)</span><span class="iti__dial-code">+34</span></li>
+					<li data-dial-code="94" data-country-code="lk"><span>Sri Lanka (ශ්‍රී ලංකාව)</span><span class="iti__dial-code">+94</span></li>
+					<li data-dial-code="249" data-country-code="sd"><span>Sudan (‫السودان‬‎)</span><span class="iti__dial-code">+249</span></li>
+					<li data-dial-code="597" data-country-code="sr"><span>Suriname</span><span class="iti__dial-code">+597</span></li>
+					<li data-dial-code="47" data-country-code="sj"><span>Svalbard and Jan Mayen</span><span class="iti__dial-code">+47</span></li>
+					<li data-dial-code="46" data-country-code="se"><span>Sweden (Sverige)</span><span class="iti__dial-code">+46</span></li>
+					<li data-dial-code="41" data-country-code="ch"><span>Switzerland (Schweiz)</span><span class="iti__dial-code">+41</span></li>
+					<li data-dial-code="963" data-country-code="sy"><span>Syria (‫سوريا‬‎)</span><span class="iti__dial-code">+963</span></li>
+					<li data-dial-code="886" data-country-code="tw"><span>Taiwan (台灣)</span><span class="iti__dial-code">+886</span></li>
+					<li data-dial-code="992" data-country-code="tj"><span>Tajikistan</span><span class="iti__dial-code">+992</span></li>
+					<li data-dial-code="255" data-country-code="tz"><span>Tanzania</span><span class="iti__dial-code">+255</span></li>
+					<li data-dial-code="66" data-country-code="th"><span>Thailand (ไทย)</span><span class="iti__dial-code">+66</span></li>
+					<li data-dial-code="670" data-country-code="tl"><span>Timor-Leste</span><span class="iti__dial-code">+670</span></li>
+					<li data-dial-code="228" data-country-code="tg"><span>Togo</span><span class="iti__dial-code">+228</span></li>
+					<li data-dial-code="690" data-country-code="tk"><span>Tokelau</span><span class="iti__dial-code">+690</span></li>
+					<li data-dial-code="676" data-country-code="to"><span>Tonga</span><span class="iti__dial-code">+676</span></li>
+					<li data-dial-code="1" data-country-code="tt"><span>Trinidad and Tobago</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="216" data-country-code="tn"><span>Tunisia (‫تونس‬‎)</span><span class="iti__dial-code">+216</span></li>
+					<li data-dial-code="90" data-country-code="tr"><span>Turkey (Türkiye)</span><span class="iti__dial-code">+90</span></li>
+					<li data-dial-code="993" data-country-code="tm"><span>Turkmenistan</span><span class="iti__dial-code">+993</span></li>
+					<li data-dial-code="1" data-country-code="tc"><span>Turks and Caicos Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="688" data-country-code="tv"><span>Tuvalu</span><span class="iti__dial-code">+688</span></li>
+					<li data-dial-code="1" data-country-code="vi"><span>U.S. Virgin Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="256" data-country-code="ug"><span>Uganda</span><span class="iti__dial-code">+256</span></li>
+					<li data-dial-code="380" data-country-code="ua"><span>Ukraine (Україна)</span><span class="iti__dial-code">+380</span></li>
+					<li data-dial-code="971" data-country-code="ae"><span>United Arab Emirates (‫الإمارات العربية المتحدة‬‎)</span><span class="iti__dial-code">+971</span></li>
+					<li data-dial-code="44" data-country-code="gb"><span>United Kingdom</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="1" data-country-code="us"><span>United States</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="598" data-country-code="uy"><span>Uruguay</span><span class="iti__dial-code">+598</span></li>
+					<li data-dial-code="998" data-country-code="uz"><span>Uzbekistan (Oʻzbekiston)</span><span class="iti__dial-code">+998</span></li>
+					<li data-dial-code="678" data-country-code="vu"><span>Vanuatu</span><span class="iti__dial-code">+678</span></li>
+					<li data-dial-code="39" data-country-code="va"><span>Vatican City (Città del Vaticano)</span><span class="iti__dial-code">+39</span></li>
+					<li data-dial-code="58" data-country-code="ve"><span>Venezuela</span><span class="iti__dial-code">+58</span></li>
+					<li data-dial-code="84" data-country-code="vn"><span>Vietnam (Việt Nam)</span><span class="iti__dial-code">+84</span></li>
+					<li data-dial-code="681" data-country-code="wf"><span>Wallis and Futuna (Wallis-et-Futuna)</span><span class="iti__dial-code">+681</span></li>
+					<li data-dial-code="212" data-country-code="eh"><span>Western Sahara (‫الصحراء الغربية‬‎)</span><span class="iti__dial-code">+212</span></li>
+					<li data-dial-code="967" data-country-code="ye"><span>Yemen (‫اليمن‬‎)</span><span class="iti__dial-code">+967</span></li>
+					<li data-dial-code="260" data-country-code="zm"><span>Zambia</span><span class="iti__dial-code">+260</span></li>
+					<li data-dial-code="263" data-country-code="zw"><span>Zimbabwe</span><span class="iti__dial-code">+263</span></li>
+					<li data-dial-code="358" data-country-code="ax"><span>Åland Islands</span><span class="iti__dial-code">+358</span></li>
+				</ul>
+			</div>
+			<input type="tel" name="phone" autocomplete="tel" required="" placeholder="612 34 56 78" value="">
+		</div>
+	</div>
+************************/
+.form .phone {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.form .phone > div {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+.form .phone > div > div {
+  width: 4rem;
+}
+.form .phone > div > div > div {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: var(--px) solid var(--c3);
+  background: linear-gradient(to bottom, var(--c7), var(--c6));
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.form .phone > div > div > div > div.arrow {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+.form .phone > div > div > div.opened > div.arrow {
+  border-bottom: 4px solid #555;
+  border-top: none;
+}
+.form .phone > div > div > div.opened + ul {
+  display: flex;
+  flex-direction: column;
+}
+.form .phone > div > div > ul {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  list-style: none;
+  text-align: left;
+  padding: 0.5rem 0;
+  margin: 0 0 0 -1px;
+  box-shadow: 0 0 1rem 0.1rem var(--c7);
+  background-color: white;
+  max-height: 200px;
+  overflow-y: scroll;
+  max-width: 100%;
+  gap: 0.5rem;
+}
+.form .phone > div > div > ul > li {
+  padding: 0 0.33rem;
+  display: flex;
+  height: 1.5rem;
+  align-items: center;
+  gap: 1rem;
+}
+.form .phone > div > div > ul > li > span:nth-child(1) {
+  width: calc(100% - 4rem);
+}
+.form .phone > div > div > ul > li > span:nth-child(2) {
+  width: 4rem;
+}
+.form .phone > div > div > ul > li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.form .phone > div > input {
+  width: calc(100% - 4rem);
+  outline: none;
+  border-radius: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border: var(--px) solid var(--c3);
+  border-left: none;
+  background-color: var(--bg);
+  padding: 0.66rem 1rem;
+  line-height: 1rem;
+  color: var(--g6);
+  font-size: 1rem;
+  font-weight: 300;
+}
+.form .phone > div > input.error {
+  border-color: red;
+}
+.form .phone > div > .errors {
+  display: none;
+  font-size: 0.6rem;
+  color: var(--c3);
+  width: 100%;
+}
+.form .phone > div > input.error + .errors {
+  display: block;
+}
+
+.form .buttons-group {
+  display: flex;
+  gap: 1px;
+  background-color: var(--c3);
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+  overflow: hidden;
+  padding: 0;
+}
+.form .buttons-group label {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.form .buttons-group label input {
+  visibility: hidden;
+  position: absolute;
+  left: -10000px;
+}
+.form .buttons-group label span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  position: relative;
+  color: var(--g4);
+  background: linear-gradient(180deg, #ffffff, #E9DED4);
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  line-height: 120%;
+}
+.form .buttons-group label input:checked + span {
+  background: linear-gradient(180deg, #c9ada3, #f9d5c9);
+  font-weight: 800;
 }

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-size: 16px;
 }
@@ -24,8 +25,13 @@ html {
   --bg2: #fbfbfb;
   --bg3: #f0f0f0;
   --brd: #f0f0f0;
-  --gr1: linear-gradient(to bottom, var(--bg) 0%,var(--bg2) 100%);
+  --gr3: linear-gradient(to bottom, var(--bg) 0%,var(--bg2) 100%);
+  --gr2: linear-gradient(to bottom, var(--g3) 0%,var(--g6) 100%);
+  --gr1: linear-gradient(to bottom, var(--c1) 0%,var(--c2) 100%);
   --shad: 0 0 1rem 0.1rem #eeeeee;
+  --r1: .5rem;
+  --r2: 1rem;
+  --r3: 1.5rem;
   --font-header: sans-serif;
   --font-text: sans-serif;
   --px: calc(1rem / 16);
@@ -108,6 +114,744 @@ figure {
 }
 figure img {
   max-width: 100%;
+}
+
+.form label {
+  color: var(--g6);
+  text-align: left;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 300;
+  padding-left: 1rem;
+  display: inline-block;
+  width: 100%;
+}
+.form label span {
+  color: #ff0000;
+}
+
+/*
+	Text
+	<div class="text"><label for=""></label><input id="" type="text" placeholder="Enter text here" value=""><div class="errors"></div></div>
+*/
+.form .text input {
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  width: 100%;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--g5);
+  padding: 0.66rem 1rem;
+  line-height: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  box-shadow: 0 0 1rem 0.1rem var(--c7);
+}
+.form .text input.error {
+  border-color: red;
+}
+
+.form .text .errors {
+  display: none;
+  font-size: 0.6rem;
+  color: var(--c3);
+}
+
+.form .text input.error + .errors {
+  display: block;
+}
+
+.form .text input::-moz-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+.form .text input:-moz-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+.form .text input:-ms-input-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+/*
+	Textarea
+	<div class="text"><label for=""></label><textarea id="" name="" placeholder="Enter text here"></textarea></div>
+*/
+.form .text textarea {
+  outline: none;
+  width: 100%;
+  height: 10rem;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--g5);
+  padding: 0.66rem 1rem;
+  line-height: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.form .text textarea.error {
+  border-color: red;
+}
+
+.form .text textarea::-moz-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+.form .text textarea:-moz-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+.form .text textarea:-ms-input-placeholder {
+  text-overflow: ellipsis;
+  color: var(--g2);
+}
+
+/*
+	Select
+	<div class="select"><label for=""></label><select id=""><option>- Выберите вариант -</option></select><div class="select_arrow"></div></div>
+*/
+.form .select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.form .select .select_arrow {
+  position: absolute;
+  bottom: 1.1rem;
+  right: 1rem;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 0.5rem 0.33rem 0 0.33rem;
+  border-color: var(--c3) transparent transparent transparent;
+}
+
+.form .select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 0.66rem 1rem;
+  outline: 0;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--g5);
+  font-size: 1rem;
+  font-weight: 300;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form .select select::-ms-expand {
+  display: none;
+}
+
+.form .select select:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.form .select select:hover ~ .select_arrow,
+.form .select select:focus ~ .select_arrow {
+  border-top-color: var(--g5);
+}
+
+.form .select select:disabled ~ .select_arrow {
+  border-top-color: #999999;
+}
+
+/*
+	<div class="control-group">
+		<label class="control control-checkbox">First checkbox<input type="checkbox" checked="checked" /><div class="control_indicator"></div></label>
+		<label class="control control-radio">First checkbox<input type="checkbox" checked="radio" name="rd1" /><div class="control_indicator"></div></label>
+	</div>
+*/
+.form .control-group {
+  padding-top: 1rem;
+}
+
+.form .control {
+  display: block;
+  position: relative;
+  color: var(--g6);
+  padding-left: 2rem;
+  margin-bottom: 0.33rem;
+  padding-top: 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 130%;
+}
+
+.form .control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.form .control_indicator {
+  position: absolute;
+  top: 0.2rem;
+  left: 0;
+  height: 1.3rem;
+  width: 1.3rem;
+  background: #fff;
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+}
+
+.form .control-radio .control_indicator {
+  border-radius: 50%;
+}
+
+.form .control:hover input ~ .control_indicator {
+  background: var(--g1);
+}
+
+.form .control input:checked ~ .control_indicator {
+  background: var(--bg);
+}
+
+.form .control:hover input:not([disabled]):checked ~ .control_indicator {
+  background: var(--g1);
+}
+
+.form .control input:disabled ~ .control_indicator {
+  background: #fff;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.form .control_indicator:after {
+  box-sizing: unset;
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.form .control input:checked ~ .control_indicator:after {
+  display: block;
+}
+
+.form .control-checkbox .control_indicator:after {
+  left: 0.5rem;
+  top: 0.2rem;
+  width: 0.2rem;
+  height: 0.5rem;
+  border: solid var(--g5);
+  border-width: 0 var(--px) var(--px) 0;
+  transform: rotate(45deg);
+}
+
+.form .control-checkbox:hover input ~ .control_indicator:after {
+  border-color: var(--g5);
+}
+
+.form .control-checkbox input:disabled ~ .control_indicator:after {
+  border-color: var(--g5);
+}
+
+.form .control input:checked ~ .control_indicator {
+  background: var(--bg);
+}
+
+.form .control-radio .control_indicator:after {
+  left: 50%;
+  top: 50%;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  margin: -0.25rem 0 0 -0.25rem;
+  background-color: var(--g5);
+}
+
+.form .control-radio:hover input ~ .control_indicator:after {
+  background-color: var(--g5);
+  border-color: transparent;
+}
+
+.form .control-radio input:disabled ~ .control_indicator:after {
+  border-color: var(--g2);
+}
+
+/************************
+
+	NUMBER
+	-----
+	Usage:
+	<div class="numeric"><div class="control-numeric"><input type="text" name="quantity" value="1"></div><div class="dec"></div><div class="inc"></div></div>
+
+************************/
+.form .numeric {
+  display: flex;
+  border: var(--px) solid var(--g2);
+  padding: 0.3rem;
+  align-items: center;
+}
+
+.form .numeric > .dec,
+.form .numeric > .inc {
+  position: relative;
+  background-color: var(--g5);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.form .numeric > .dec:before,
+.form .numeric > .inc:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "icomoon";
+  color: var(--g5);
+  text-align: center;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.form .numeric > .dec:before {
+  content: "\e934";
+}
+
+.form .numeric > .inc:before {
+  content: "\e935";
+}
+
+.form .numeric > .control-numeric {
+  flex-grow: 1;
+}
+
+.form .numeric > .control-numeric > input {
+  height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border: none;
+  text-align: center;
+  width: 4.3rem;
+}
+.form .numeric > .control-numeric > input.error {
+  border-color: red;
+}
+
+/************************
+
+	PHONE
+	-----
+	Usage:
+	<div class="phone">
+		<label for="quiz-phone">Phone</label>
+		<div>
+			<div>
+				<div class="selector">
+					<div class="code">+34</div>
+					<div class="arrow"></div>
+				</div>
+				<ul>
+					<li data-dial-code="93" data-country-code="af"><span>Afghanistan (‫افغانستان‬‎)</span><span class="iti__dial-code">+93</span></li>
+					<li data-dial-code="355" data-country-code="al"><span>Albania (Shqipëri)</span><span class="iti__dial-code">+355</span></li>
+					<li data-dial-code="213" data-country-code="dz"><span>Algeria (‫الجزائر‬‎)</span><span class="iti__dial-code">+213</span></li>
+					<li data-dial-code="1" data-country-code="as"><span>American Samoa</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="376" data-country-code="ad"><span>Andorra</span><span class="iti__dial-code">+376</span></li>
+					<li data-dial-code="244" data-country-code="ao"><span>Angola</span><span class="iti__dial-code">+244</span></li>
+					<li data-dial-code="1" data-country-code="ai"><span>Anguilla</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="ag"><span>Antigua and Barbuda</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="54" data-country-code="ar"><span>Argentina</span><span class="iti__dial-code">+54</span></li>
+					<li data-dial-code="374" data-country-code="am"><span>Armenia (Հայաստան)</span><span class="iti__dial-code">+374</span></li>
+					<li data-dial-code="297" data-country-code="aw"><span>Aruba</span><span class="iti__dial-code">+297</span></li>
+					<li data-dial-code="247" data-country-code="ac"><span>Ascension Island</span><span class="iti__dial-code">+247</span></li>
+					<li data-dial-code="61" data-country-code="au"><span>Australia</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="43" data-country-code="at"><span>Austria (Österreich)</span><span class="iti__dial-code">+43</span></li>
+					<li data-dial-code="994" data-country-code="az"><span>Azerbaijan (Azərbaycan)</span><span class="iti__dial-code">+994</span></li>
+					<li data-dial-code="1" data-country-code="bs"><span>Bahamas</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="973" data-country-code="bh"><span>Bahrain (‫البحرين‬‎)</span><span class="iti__dial-code">+973</span></li>
+					<li data-dial-code="880" data-country-code="bd"><span>Bangladesh (বাংলাদেশ)</span><span class="iti__dial-code">+880</span></li>
+					<li data-dial-code="1" data-country-code="bb"><span>Barbados</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="375" data-country-code="by"><span>Belarus (Беларусь)</span><span class="iti__dial-code">+375</span></li>
+					<li data-dial-code="32" data-country-code="be"><span>Belgium (België)</span><span class="iti__dial-code">+32</span></li>
+					<li data-dial-code="501" data-country-code="bz"><span>Belize</span><span class="iti__dial-code">+501</span></li>
+					<li data-dial-code="229" data-country-code="bj"><span>Benin (Bénin)</span><span class="iti__dial-code">+229</span></li>
+					<li data-dial-code="1" data-country-code="bm"><span>Bermuda</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="975" data-country-code="bt"><span>Bhutan (འབྲུག)</span><span class="iti__dial-code">+975</span></li>
+					<li data-dial-code="591" data-country-code="bo"><span>Bolivia</span><span class="iti__dial-code">+591</span></li>
+					<li data-dial-code="387" data-country-code="ba"><span>Bosnia and Herzegovina (Босна и Херцеговина)</span><span class="iti__dial-code">+387</span></li>
+					<li data-dial-code="267" data-country-code="bw"><span>Botswana</span><span class="iti__dial-code">+267</span></li>
+					<li data-dial-code="55" data-country-code="br"><span>Brazil (Brasil)</span><span class="iti__dial-code">+55</span></li>
+					<li data-dial-code="246" data-country-code="io"><span>British Indian Ocean Territory</span><span class="iti__dial-code">+246</span></li>
+					<li data-dial-code="1" data-country-code="vg"><span>British Virgin Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="673" data-country-code="bn"><span>Brunei</span><span class="iti__dial-code">+673</span></li>
+					<li data-dial-code="359" data-country-code="bg"><span>Bulgaria (България)</span><span class="iti__dial-code">+359</span></li>
+					<li data-dial-code="226" data-country-code="bf"><span>Burkina Faso</span><span class="iti__dial-code">+226</span></li>
+					<li data-dial-code="257" data-country-code="bi"><span>Burundi (Uburundi)</span><span class="iti__dial-code">+257</span></li>
+					<li data-dial-code="855" data-country-code="kh"><span>Cambodia (កម្ពុជា)</span><span class="iti__dial-code">+855</span></li>
+					<li data-dial-code="237" data-country-code="cm"><span>Cameroon (Cameroun)</span><span class="iti__dial-code">+237</span></li>
+					<li data-dial-code="1" data-country-code="ca"><span>Canada</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="238" data-country-code="cv"><span>Cape Verde (Kabu Verdi)</span><span class="iti__dial-code">+238</span></li>
+					<li data-dial-code="599" data-country-code="bq"><span>Caribbean Netherlands</span><span class="iti__dial-code">+599</span></li>
+					<li data-dial-code="1" data-country-code="ky"><span>Cayman Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="236" data-country-code="cf"><span>Central African Republic (République centrafricaine)</span><span class="iti__dial-code">+236</span></li>
+					<li data-dial-code="235" data-country-code="td"><span>Chad (Tchad)</span><span class="iti__dial-code">+235</span></li>
+					<li data-dial-code="56" data-country-code="cl"><span>Chile</span><span class="iti__dial-code">+56</span></li>
+					<li data-dial-code="86" data-country-code="cn"><span>China (中国)</span><span class="iti__dial-code">+86</span></li>
+					<li data-dial-code="61" data-country-code="cx"><span>Christmas Island</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="61" data-country-code="cc"><span>Cocos (Keeling) Islands</span><span class="iti__dial-code">+61</span></li>
+					<li data-dial-code="57" data-country-code="co"><span>Colombia</span><span class="iti__dial-code">+57</span></li>
+					<li data-dial-code="269" data-country-code="km"><span>Comoros (‫جزر القمر‬‎)</span><span class="iti__dial-code">+269</span></li>
+					<li data-dial-code="243" data-country-code="cd"><span>Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)</span><span class="iti__dial-code">+243</span></li>
+					<li data-dial-code="242" data-country-code="cg"><span>Congo (Republic) (Congo-Brazzaville)</span><span class="iti__dial-code">+242</span></li>
+					<li data-dial-code="682" data-country-code="ck"><span>Cook Islands</span><span class="iti__dial-code">+682</span></li>
+					<li data-dial-code="506" data-country-code="cr"><span>Costa Rica</span><span class="iti__dial-code">+506</span></li>
+					<li data-dial-code="225" data-country-code="ci"><span>Côte d’Ivoire</span><span class="iti__dial-code">+225</span></li>
+					<li data-dial-code="385" data-country-code="hr"><span>Croatia (Hrvatska)</span><span class="iti__dial-code">+385</span></li>
+					<li data-dial-code="53" data-country-code="cu"><span>Cuba</span><span class="iti__dial-code">+53</span></li>
+					<li data-dial-code="599" data-country-code="cw"><span>Curaçao</span><span class="iti__dial-code">+599</span></li>
+					<li data-dial-code="357" data-country-code="cy"><span>Cyprus (Κύπρος)</span><span class="iti__dial-code">+357</span></li>
+					<li data-dial-code="420" data-country-code="cz"><span>Czech Republic (Česká republika)</span><span class="iti__dial-code">+420</span></li>
+					<li data-dial-code="45" data-country-code="dk"><span>Denmark (Danmark)</span><span class="iti__dial-code">+45</span></li>
+					<li data-dial-code="253" data-country-code="dj"><span>Djibouti</span><span class="iti__dial-code">+253</span></li>
+					<li data-dial-code="1" data-country-code="dm"><span>Dominica</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="do"><span>Dominican Republic (República Dominicana)</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="593" data-country-code="ec"><span>Ecuador</span><span class="iti__dial-code">+593</span></li>
+					<li data-dial-code="20" data-country-code="eg"><span>Egypt (‫مصر‬‎)</span><span class="iti__dial-code">+20</span></li>
+					<li data-dial-code="503" data-country-code="sv"><span>El Salvador</span><span class="iti__dial-code">+503</span></li>
+					<li data-dial-code="240" data-country-code="gq"><span>Equatorial Guinea (Guinea Ecuatorial)</span><span class="iti__dial-code">+240</span></li>
+					<li data-dial-code="291" data-country-code="er"><span>Eritrea</span><span class="iti__dial-code">+291</span></li>
+					<li data-dial-code="372" data-country-code="ee"><span>Estonia (Eesti)</span><span class="iti__dial-code">+372</span></li>
+					<li data-dial-code="268" data-country-code="sz"><span>Eswatini</span><span class="iti__dial-code">+268</span></li>
+					<li data-dial-code="251" data-country-code="et"><span>Ethiopia</span><span class="iti__dial-code">+251</span></li>
+					<li data-dial-code="500" data-country-code="fk"><span>Falkland Islands (Islas Malvinas)</span><span class="iti__dial-code">+500</span></li>
+					<li data-dial-code="298" data-country-code="fo"><span>Faroe Islands (Føroyar)</span><span class="iti__dial-code">+298</span></li>
+					<li data-dial-code="679" data-country-code="fj"><span>Fiji</span><span class="iti__dial-code">+679</span></li>
+					<li data-dial-code="358" data-country-code="fi"><span>Finland (Suomi)</span><span class="iti__dial-code">+358</span></li>
+					<li data-dial-code="33" data-country-code="fr"><span>France</span><span class="iti__dial-code">+33</span></li>
+					<li data-dial-code="594" data-country-code="gf"><span>French Guiana (Guyane française)</span><span class="iti__dial-code">+594</span></li>
+					<li data-dial-code="689" data-country-code="pf"><span>French Polynesia (Polynésie française)</span><span class="iti__dial-code">+689</span></li>
+					<li data-dial-code="241" data-country-code="ga"><span>Gabon</span><span class="iti__dial-code">+241</span></li>
+					<li data-dial-code="220" data-country-code="gm"><span>Gambia</span><span class="iti__dial-code">+220</span></li>
+					<li data-dial-code="995" data-country-code="ge"><span>Georgia (საქართველო)</span><span class="iti__dial-code">+995</span></li>
+					<li data-dial-code="49" data-country-code="de"><span>Germany (Deutschland)</span><span class="iti__dial-code">+49</span></li>
+					<li data-dial-code="233" data-country-code="gh"><span>Ghana (Gaana)</span><span class="iti__dial-code">+233</span></li>
+					<li data-dial-code="350" data-country-code="gi"><span>Gibraltar</span><span class="iti__dial-code">+350</span></li>
+					<li data-dial-code="30" data-country-code="gr"><span>Greece (Ελλάδα)</span><span class="iti__dial-code">+30</span></li>
+					<li data-dial-code="299" data-country-code="gl"><span>Greenland (Kalaallit Nunaat)</span><span class="iti__dial-code">+299</span></li>
+					<li data-dial-code="1" data-country-code="gd"><span>Grenada</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="590" data-country-code="gp"><span>Guadeloupe</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="1" data-country-code="gu"><span>Guam</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="502" data-country-code="gt"><span>Guatemala</span><span class="iti__dial-code">+502</span></li>
+					<li data-dial-code="44" data-country-code="gg"><span>Guernsey</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="224" data-country-code="gn"><span>Guinea (Guinée)</span><span class="iti__dial-code">+224</span></li>
+					<li data-dial-code="245" data-country-code="gw"><span>Guinea-Bissau (Guiné Bissau)</span><span class="iti__dial-code">+245</span></li>
+					<li data-dial-code="592" data-country-code="gy"><span>Guyana</span><span class="iti__dial-code">+592</span></li>
+					<li data-dial-code="509" data-country-code="ht"><span>Haiti</span><span class="iti__dial-code">+509</span></li>
+					<li data-dial-code="504" data-country-code="hn"><span>Honduras</span><span class="iti__dial-code">+504</span></li>
+					<li data-dial-code="852" data-country-code="hk"><span>Hong Kong (香港)</span><span class="iti__dial-code">+852</span></li>
+					<li data-dial-code="36" data-country-code="hu"><span>Hungary (Magyarország)</span><span class="iti__dial-code">+36</span></li>
+					<li data-dial-code="354" data-country-code="is"><span>Iceland (Ísland)</span><span class="iti__dial-code">+354</span></li>
+					<li data-dial-code="91" data-country-code="in"><span>India (भारत)</span><span class="iti__dial-code">+91</span></li>
+					<li data-dial-code="62" data-country-code="id"><span>Indonesia</span><span class="iti__dial-code">+62</span></li>
+					<li data-dial-code="98" data-country-code="ir"><span>Iran (‫ایران‬‎)</span><span class="iti__dial-code">+98</span></li>
+					<li data-dial-code="964" data-country-code="iq"><span>Iraq (‫العراق‬‎)</span><span class="iti__dial-code">+964</span></li>
+					<li data-dial-code="353" data-country-code="ie"><span>Ireland</span><span class="iti__dial-code">+353</span></li>
+					<li data-dial-code="44" data-country-code="im"><span>Isle of Man</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="972" data-country-code="il"><span>Israel (‫ישראל‬‎)</span><span class="iti__dial-code">+972</span></li>
+					<li data-dial-code="39" data-country-code="it"><span>Italy (Italia)</span><span class="iti__dial-code">+39</span></li>
+					<li data-dial-code="1" data-country-code="jm"><span>Jamaica</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="81" data-country-code="jp"><span>Japan (日本)</span><span class="iti__dial-code">+81</span></li>
+					<li data-dial-code="44" data-country-code="je"><span>Jersey</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="962" data-country-code="jo"><span>Jordan (‫الأردن‬‎)</span><span class="iti__dial-code">+962</span></li>
+					<li data-dial-code="7" data-country-code="kz"><span>Kazakhstan (Казахстан)</span><span class="iti__dial-code">+7</span></li>
+					<li data-dial-code="254" data-country-code="ke"><span>Kenya</span><span class="iti__dial-code">+254</span></li>
+					<li data-dial-code="686" data-country-code="ki"><span>Kiribati</span><span class="iti__dial-code">+686</span></li>
+					<li data-dial-code="383" data-country-code="xk"><span>Kosovo</span><span class="iti__dial-code">+383</span></li>
+					<li data-dial-code="965" data-country-code="kw"><span>Kuwait (‫الكويت‬‎)</span><span class="iti__dial-code">+965</span></li>
+					<li data-dial-code="996" data-country-code="kg"><span>Kyrgyzstan (Кыргызстан)</span><span class="iti__dial-code">+996</span></li>
+					<li data-dial-code="856" data-country-code="la"><span>Laos (ລາວ)</span><span class="iti__dial-code">+856</span></li>
+					<li data-dial-code="371" data-country-code="lv"><span>Latvia (Latvija)</span><span class="iti__dial-code">+371</span></li>
+					<li data-dial-code="961" data-country-code="lb"><span>Lebanon (‫لبنان‬‎)</span><span class="iti__dial-code">+961</span></li>
+					<li data-dial-code="266" data-country-code="ls"><span>Lesotho</span><span class="iti__dial-code">+266</span></li>
+					<li data-dial-code="231" data-country-code="lr"><span>Liberia</span><span class="iti__dial-code">+231</span></li>
+					<li data-dial-code="218" data-country-code="ly"><span>Libya (‫ليبيا‬‎)</span><span class="iti__dial-code">+218</span></li>
+					<li data-dial-code="423" data-country-code="li"><span>Liechtenstein</span><span class="iti__dial-code">+423</span></li>
+					<li data-dial-code="370" data-country-code="lt"><span>Lithuania (Lietuva)</span><span class="iti__dial-code">+370</span></li>
+					<li data-dial-code="352" data-country-code="lu"><span>Luxembourg</span><span class="iti__dial-code">+352</span></li>
+					<li data-dial-code="853" data-country-code="mo"><span>Macau (澳門)</span><span class="iti__dial-code">+853</span></li>
+					<li data-dial-code="389" data-country-code="mk"><span>North Macedonia (Македонија)</span><span class="iti__dial-code">+389</span></li>
+					<li data-dial-code="261" data-country-code="mg"><span>Madagascar (Madagasikara)</span><span class="iti__dial-code">+261</span></li>
+					<li data-dial-code="265" data-country-code="mw"><span>Malawi</span><span class="iti__dial-code">+265</span></li>
+					<li data-dial-code="60" data-country-code="my"><span>Malaysia</span><span class="iti__dial-code">+60</span></li>
+					<li data-dial-code="960" data-country-code="mv"><span>Maldives</span><span class="iti__dial-code">+960</span></li>
+					<li data-dial-code="223" data-country-code="ml"><span>Mali</span><span class="iti__dial-code">+223</span></li>
+					<li data-dial-code="356" data-country-code="mt"><span>Malta</span><span class="iti__dial-code">+356</span></li>
+					<li data-dial-code="692" data-country-code="mh"><span>Marshall Islands</span><span class="iti__dial-code">+692</span></li>
+					<li data-dial-code="596" data-country-code="mq"><span>Martinique</span><span class="iti__dial-code">+596</span></li>
+					<li data-dial-code="222" data-country-code="mr"><span>Mauritania (‫موريتانيا‬‎)</span><span class="iti__dial-code">+222</span></li>
+					<li data-dial-code="230" data-country-code="mu"><span>Mauritius (Moris)</span><span class="iti__dial-code">+230</span></li>
+					<li data-dial-code="262" data-country-code="yt"><span>Mayotte</span><span class="iti__dial-code">+262</span></li>
+					<li data-dial-code="52" data-country-code="mx"><span>Mexico (México)</span><span class="iti__dial-code">+52</span></li>
+					<li data-dial-code="691" data-country-code="fm"><span>Micronesia</span><span class="iti__dial-code">+691</span></li>
+					<li data-dial-code="373" data-country-code="md"><span>Moldova (Republica Moldova)</span><span class="iti__dial-code">+373</span></li>
+					<li data-dial-code="377" data-country-code="mc"><span>Monaco</span><span class="iti__dial-code">+377</span></li>
+					<li data-dial-code="976" data-country-code="mn"><span>Mongolia (Монгол)</span><span class="iti__dial-code">+976</span></li>
+					<li data-dial-code="382" data-country-code="me"><span>Montenegro (Crna Gora)</span><span class="iti__dial-code">+382</span></li>
+					<li data-dial-code="1" data-country-code="ms"><span>Montserrat</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="212" data-country-code="ma"><span>Morocco (‫المغرب‬‎)</span><span class="iti__dial-code">+212</span></li>
+					<li data-dial-code="258" data-country-code="mz"><span>Mozambique (Moçambique)</span><span class="iti__dial-code">+258</span></li>
+					<li data-dial-code="95" data-country-code="mm"><span>Myanmar (Burma) (မြန်မာ)</span><span class="iti__dial-code">+95</span></li>
+					<li data-dial-code="264" data-country-code="na"><span>Namibia (Namibië)</span><span class="iti__dial-code">+264</span></li>
+					<li data-dial-code="674" data-country-code="nr"><span>Nauru</span><span class="iti__dial-code">+674</span></li>
+					<li data-dial-code="977" data-country-code="np"><span>Nepal (नेपाल)</span><span class="iti__dial-code">+977</span></li>
+					<li data-dial-code="31" data-country-code="nl"><span>Netherlands (Nederland)</span><span class="iti__dial-code">+31</span></li>
+					<li data-dial-code="687" data-country-code="nc"><span>New Caledonia (Nouvelle-Calédonie)</span><span class="iti__dial-code">+687</span></li>
+					<li data-dial-code="64" data-country-code="nz"><span>New Zealand</span><span class="iti__dial-code">+64</span></li>
+					<li data-dial-code="505" data-country-code="ni"><span>Nicaragua</span><span class="iti__dial-code">+505</span></li>
+					<li data-dial-code="227" data-country-code="ne"><span>Niger (Nijar)</span><span class="iti__dial-code">+227</span></li>
+					<li data-dial-code="234" data-country-code="ng"><span>Nigeria</span><span class="iti__dial-code">+234</span></li>
+					<li data-dial-code="683" data-country-code="nu"><span>Niue</span><span class="iti__dial-code">+683</span></li>
+					<li data-dial-code="672" data-country-code="nf"><span>Norfolk Island</span><span class="iti__dial-code">+672</span></li>
+					<li data-dial-code="850" data-country-code="kp"><span>North Korea (조선 민주주의 인민 공화국)</span><span class="iti__dial-code">+850</span></li>
+					<li data-dial-code="1" data-country-code="mp"><span>Northern Mariana Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="47" data-country-code="no"><span>Norway (Norge)</span><span class="iti__dial-code">+47</span></li>
+					<li data-dial-code="968" data-country-code="om"><span>Oman (‫عُمان‬‎)</span><span class="iti__dial-code">+968</span></li>
+					<li data-dial-code="92" data-country-code="pk"><span>Pakistan (‫پاکستان‬‎)</span><span class="iti__dial-code">+92</span></li>
+					<li data-dial-code="680" data-country-code="pw"><span>Palau</span><span class="iti__dial-code">+680</span></li>
+					<li data-dial-code="970" data-country-code="ps"><span>Palestine (‫فلسطين‬‎)</span><span class="iti__dial-code">+970</span></li>
+					<li data-dial-code="507" data-country-code="pa"><span>Panama (Panamá)</span><span class="iti__dial-code">+507</span></li>
+					<li data-dial-code="675" data-country-code="pg"><span>Papua New Guinea</span><span class="iti__dial-code">+675</span></li>
+					<li data-dial-code="595" data-country-code="py"><span>Paraguay</span><span class="iti__dial-code">+595</span></li>
+					<li data-dial-code="51" data-country-code="pe"><span>Peru (Perú)</span><span class="iti__dial-code">+51</span></li>
+					<li data-dial-code="63" data-country-code="ph"><span>Philippines</span><span class="iti__dial-code">+63</span></li>
+					<li data-dial-code="48" data-country-code="pl"><span>Poland (Polska)</span><span class="iti__dial-code">+48</span></li>
+					<li data-dial-code="351" data-country-code="pt"><span>Portugal</span><span class="iti__dial-code">+351</span></li>
+					<li data-dial-code="1" data-country-code="pr"><span>Puerto Rico</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="974" data-country-code="qa"><span>Qatar (‫قطر‬‎)</span><span class="iti__dial-code">+974</span></li>
+					<li data-dial-code="262" data-country-code="re"><span>Réunion (La Réunion)</span><span class="iti__dial-code">+262</span></li>
+					<li data-dial-code="40" data-country-code="ro"><span>Romania (România)</span><span class="iti__dial-code">+40</span></li>
+					<li data-dial-code="7" data-country-code="ru"><span>Russia (Россия)</span><span class="iti__dial-code">+7</span></li>
+					<li data-dial-code="250" data-country-code="rw"><span>Rwanda</span><span class="iti__dial-code">+250</span></li>
+					<li data-dial-code="590" data-country-code="bl"><span>Saint Barthélemy</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="290" data-country-code="sh"><span>Saint Helena</span><span class="iti__dial-code">+290</span></li>
+					<li data-dial-code="1" data-country-code="kn"><span>Saint Kitts and Nevis</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="1" data-country-code="lc"><span>Saint Lucia</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="590" data-country-code="mf"><span>Saint Martin (Saint-Martin (partie française))</span><span class="iti__dial-code">+590</span></li>
+					<li data-dial-code="508" data-country-code="pm"><span>Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)</span><span class="iti__dial-code">+508</span></li>
+					<li data-dial-code="1" data-country-code="vc"><span>Saint Vincent and the Grenadines</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="685" data-country-code="ws"><span>Samoa</span><span class="iti__dial-code">+685</span></li>
+					<li data-dial-code="378" data-country-code="sm"><span>San Marino</span><span class="iti__dial-code">+378</span></li>
+					<li data-dial-code="239" data-country-code="st"><span>São Tomé and Príncipe (São Tomé e Príncipe)</span><span class="iti__dial-code">+239</span></li>
+					<li data-dial-code="966" data-country-code="sa"><span>Saudi Arabia (‫المملكة العربية السعودية‬‎)</span><span class="iti__dial-code">+966</span></li>
+					<li data-dial-code="221" data-country-code="sn"><span>Senegal (Sénégal)</span><span class="iti__dial-code">+221</span></li>
+					<li data-dial-code="381" data-country-code="rs"><span>Serbia (Србија)</span><span class="iti__dial-code">+381</span></li>
+					<li data-dial-code="248" data-country-code="sc"><span>Seychelles</span><span class="iti__dial-code">+248</span></li>
+					<li data-dial-code="232" data-country-code="sl"><span>Sierra Leone</span><span class="iti__dial-code">+232</span></li>
+					<li data-dial-code="65" data-country-code="sg"><span>Singapore</span><span class="iti__dial-code">+65</span></li>
+					<li data-dial-code="1" data-country-code="sx"><span>Sint Maarten</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="421" data-country-code="sk"><span>Slovakia (Slovensko)</span><span class="iti__dial-code">+421</span></li>
+					<li data-dial-code="386" data-country-code="si"><span>Slovenia (Slovenija)</span><span class="iti__dial-code">+386</span></li>
+					<li data-dial-code="677" data-country-code="sb"><span>Solomon Islands</span><span class="iti__dial-code">+677</span></li>
+					<li data-dial-code="252" data-country-code="so"><span>Somalia (Soomaaliya)</span><span class="iti__dial-code">+252</span></li>
+					<li data-dial-code="27" data-country-code="za"><span>South Africa</span><span class="iti__dial-code">+27</span></li>
+					<li data-dial-code="82" data-country-code="kr"><span>South Korea (대한민국)</span><span class="iti__dial-code">+82</span></li>
+					<li data-dial-code="211" data-country-code="ss"><span>South Sudan (‫جنوب السودان‬‎)</span><span class="iti__dial-code">+211</span></li>
+					<li data-dial-code="34" data-country-code="es"><span>Spain (España)</span><span class="iti__dial-code">+34</span></li>
+					<li data-dial-code="94" data-country-code="lk"><span>Sri Lanka (ශ්‍රී ලංකාව)</span><span class="iti__dial-code">+94</span></li>
+					<li data-dial-code="249" data-country-code="sd"><span>Sudan (‫السودان‬‎)</span><span class="iti__dial-code">+249</span></li>
+					<li data-dial-code="597" data-country-code="sr"><span>Suriname</span><span class="iti__dial-code">+597</span></li>
+					<li data-dial-code="47" data-country-code="sj"><span>Svalbard and Jan Mayen</span><span class="iti__dial-code">+47</span></li>
+					<li data-dial-code="46" data-country-code="se"><span>Sweden (Sverige)</span><span class="iti__dial-code">+46</span></li>
+					<li data-dial-code="41" data-country-code="ch"><span>Switzerland (Schweiz)</span><span class="iti__dial-code">+41</span></li>
+					<li data-dial-code="963" data-country-code="sy"><span>Syria (‫سوريا‬‎)</span><span class="iti__dial-code">+963</span></li>
+					<li data-dial-code="886" data-country-code="tw"><span>Taiwan (台灣)</span><span class="iti__dial-code">+886</span></li>
+					<li data-dial-code="992" data-country-code="tj"><span>Tajikistan</span><span class="iti__dial-code">+992</span></li>
+					<li data-dial-code="255" data-country-code="tz"><span>Tanzania</span><span class="iti__dial-code">+255</span></li>
+					<li data-dial-code="66" data-country-code="th"><span>Thailand (ไทย)</span><span class="iti__dial-code">+66</span></li>
+					<li data-dial-code="670" data-country-code="tl"><span>Timor-Leste</span><span class="iti__dial-code">+670</span></li>
+					<li data-dial-code="228" data-country-code="tg"><span>Togo</span><span class="iti__dial-code">+228</span></li>
+					<li data-dial-code="690" data-country-code="tk"><span>Tokelau</span><span class="iti__dial-code">+690</span></li>
+					<li data-dial-code="676" data-country-code="to"><span>Tonga</span><span class="iti__dial-code">+676</span></li>
+					<li data-dial-code="1" data-country-code="tt"><span>Trinidad and Tobago</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="216" data-country-code="tn"><span>Tunisia (‫تونس‬‎)</span><span class="iti__dial-code">+216</span></li>
+					<li data-dial-code="90" data-country-code="tr"><span>Turkey (Türkiye)</span><span class="iti__dial-code">+90</span></li>
+					<li data-dial-code="993" data-country-code="tm"><span>Turkmenistan</span><span class="iti__dial-code">+993</span></li>
+					<li data-dial-code="1" data-country-code="tc"><span>Turks and Caicos Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="688" data-country-code="tv"><span>Tuvalu</span><span class="iti__dial-code">+688</span></li>
+					<li data-dial-code="1" data-country-code="vi"><span>U.S. Virgin Islands</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="256" data-country-code="ug"><span>Uganda</span><span class="iti__dial-code">+256</span></li>
+					<li data-dial-code="380" data-country-code="ua"><span>Ukraine (Україна)</span><span class="iti__dial-code">+380</span></li>
+					<li data-dial-code="971" data-country-code="ae"><span>United Arab Emirates (‫الإمارات العربية المتحدة‬‎)</span><span class="iti__dial-code">+971</span></li>
+					<li data-dial-code="44" data-country-code="gb"><span>United Kingdom</span><span class="iti__dial-code">+44</span></li>
+					<li data-dial-code="1" data-country-code="us"><span>United States</span><span class="iti__dial-code">+1</span></li>
+					<li data-dial-code="598" data-country-code="uy"><span>Uruguay</span><span class="iti__dial-code">+598</span></li>
+					<li data-dial-code="998" data-country-code="uz"><span>Uzbekistan (Oʻzbekiston)</span><span class="iti__dial-code">+998</span></li>
+					<li data-dial-code="678" data-country-code="vu"><span>Vanuatu</span><span class="iti__dial-code">+678</span></li>
+					<li data-dial-code="39" data-country-code="va"><span>Vatican City (Città del Vaticano)</span><span class="iti__dial-code">+39</span></li>
+					<li data-dial-code="58" data-country-code="ve"><span>Venezuela</span><span class="iti__dial-code">+58</span></li>
+					<li data-dial-code="84" data-country-code="vn"><span>Vietnam (Việt Nam)</span><span class="iti__dial-code">+84</span></li>
+					<li data-dial-code="681" data-country-code="wf"><span>Wallis and Futuna (Wallis-et-Futuna)</span><span class="iti__dial-code">+681</span></li>
+					<li data-dial-code="212" data-country-code="eh"><span>Western Sahara (‫الصحراء الغربية‬‎)</span><span class="iti__dial-code">+212</span></li>
+					<li data-dial-code="967" data-country-code="ye"><span>Yemen (‫اليمن‬‎)</span><span class="iti__dial-code">+967</span></li>
+					<li data-dial-code="260" data-country-code="zm"><span>Zambia</span><span class="iti__dial-code">+260</span></li>
+					<li data-dial-code="263" data-country-code="zw"><span>Zimbabwe</span><span class="iti__dial-code">+263</span></li>
+					<li data-dial-code="358" data-country-code="ax"><span>Åland Islands</span><span class="iti__dial-code">+358</span></li>
+				</ul>
+			</div>
+			<input type="tel" name="phone" autocomplete="tel" required="" placeholder="612 34 56 78" value="">
+		</div>
+	</div>
+************************/
+.form .phone {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.form .phone > div {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+.form .phone > div > div {
+  width: 4rem;
+}
+.form .phone > div > div > div {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border: var(--px) solid var(--c3);
+  background: linear-gradient(to bottom, var(--c7), var(--c6));
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.form .phone > div > div > div > div.arrow {
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #555;
+}
+.form .phone > div > div > div.opened > div.arrow {
+  border-bottom: 4px solid #555;
+  border-top: none;
+}
+.form .phone > div > div > div.opened + ul {
+  display: flex;
+  flex-direction: column;
+}
+.form .phone > div > div > ul {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  list-style: none;
+  text-align: left;
+  padding: 0.5rem 0;
+  margin: 0 0 0 -1px;
+  box-shadow: 0 0 1rem 0.1rem var(--c7);
+  background-color: white;
+  max-height: 200px;
+  overflow-y: scroll;
+  max-width: 100%;
+  gap: 0.5rem;
+}
+.form .phone > div > div > ul > li {
+  padding: 0 0.33rem;
+  display: flex;
+  height: 1.5rem;
+  align-items: center;
+  gap: 1rem;
+}
+.form .phone > div > div > ul > li > span:nth-child(1) {
+  width: calc(100% - 4rem);
+}
+.form .phone > div > div > ul > li > span:nth-child(2) {
+  width: 4rem;
+}
+.form .phone > div > div > ul > li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.form .phone > div > input {
+  width: calc(100% - 4rem);
+  outline: none;
+  border-radius: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border: var(--px) solid var(--c3);
+  border-left: none;
+  background-color: var(--bg);
+  padding: 0.66rem 1rem;
+  line-height: 1rem;
+  color: var(--g6);
+  font-size: 1rem;
+  font-weight: 300;
+}
+.form .phone > div > input.error {
+  border-color: red;
+}
+.form .phone > div > .errors {
+  display: none;
+  font-size: 0.6rem;
+  color: var(--c3);
+  width: 100%;
+}
+.form .phone > div > input.error + .errors {
+  display: block;
+}
+
+.form .buttons-group {
+  display: flex;
+  gap: 1px;
+  background-color: var(--c3);
+  border: var(--px) solid var(--c3);
+  border-radius: var(--r1);
+  overflow: hidden;
+  padding: 0;
+}
+.form .buttons-group label {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.form .buttons-group label input {
+  visibility: hidden;
+  position: absolute;
+  left: -10000px;
+}
+.form .buttons-group label span {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  position: relative;
+  color: var(--g4);
+  background: linear-gradient(180deg, #ffffff, #E9DED4);
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  line-height: 120%;
+}
+.form .buttons-group label input:checked + span {
+  background: linear-gradient(180deg, #c9ada3, #f9d5c9);
+  font-weight: 800;
 }
 
 @keyframes flare-btn {
@@ -636,418 +1380,395 @@ figure img {
     transform: translateX(-21.3rem);
   }
 }
-.headers--website-5 {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding-top: 1rem;
-  z-index: 100;
-}
-.headers--website-5 > div, .headers--website-5 > nav {
+.headers--website-4 {
   padding-inline: var(--pd);
+  padding-block: 1rem;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  gap: 1rem;
+  transition: background 0.2s linear;
 }
-.headers--website-5 > div:nth-child(1) {
-  display: flex;
-  column-gap: 2rem;
-  align-items: center;
-  justify-content: space-between;
-}
-.headers--website-5 > div:nth-child(1) .logo {
-  display: flex;
-  column-gap: 2rem;
-  align-items: center;
-}
-.headers--website-5 > div:nth-child(1) .logo a {
-  margin: 0;
-  font-size: 2.2rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--c1);
-}
-.headers--website-5 > div:nth-child(1) .logo a span {
-  font-weight: 300;
-  color: var(--c1);
-}
-.headers--website-5 > div:nth-child(1) .logo a img, .headers--website-5 > div:nth-child(1) .logo a svg {
-  height: 2.5rem;
-}
-.headers--website-5 > div:nth-child(1) .logo .slogan {
-  font-size: 0.7rem;
-  line-height: 120%;
-  color: var(--g4);
-}
-.headers--website-5 > div:nth-child(1) .logo .slogan span {
-  color: var(--c1);
-  text-decoration: dashed;
-}
-@media (max-width: 767px) {
-  .headers--website-5 > div:nth-child(1) .logo {
-    order: 1;
-  }
-  .headers--website-5 > div:nth-child(1) .logo a img {
-    height: 2rem;
-  }
-  .headers--website-5 > div:nth-child(1) .logo .slogan {
-    display: none;
-  }
-}
-.headers--website-5 > div:nth-child(1) .calc-btn .btn {
-  display: inline-flex;
-  text-decoration: none;
-  font-size: 0.7rem;
-  padding: 0.6rem 1rem;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s;
-  border-radius: 100px;
-  box-shadow: 0 2.7rem 6rem rgba(120, 136, 255, 0.2), 0 0.25rem 0 var(--c2), inset 0 0 1rem rgba(206, 229, 251, 0.3);
-  background-color: var(--c1);
-  background-image: linear-gradient(to top, var(--c1) 0, var(--c3) 99%);
-  z-index: 6;
-  cursor: pointer;
-  border: none;
-  position: relative;
-  color: #fff;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  column-gap: 1rem;
-}
-.headers--website-5 > div:nth-child(1) .calc-btn .btn:hover {
-  box-shadow: 0 2.7rem 6rem rgba(120, 136, 255, 0.2), 0 -0.25rem 0 var(--c2), inset 0 0 1rem rgba(206, 229, 251, 0.3);
-}
-@media (max-width: 991px) {
-  .headers--website-5 > div:nth-child(1) .calc-btn {
-    display: none;
-  }
-}
-.headers--website-5 > div:nth-child(1) .lang {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.headers--website-5 > div:nth-child(1) .lang > div:nth-child(1) {
-  font-size: 0.7rem;
-  color: var(--g4);
-}
-.headers--website-5 > div:nth-child(1) .lang > a {
-  font-size: 1rem;
-  color: var(--c1);
-  text-decoration: dashed;
-}
-.headers--website-5 > div:nth-child(1) .lang .dropdown {
-  display: none;
-  position: absolute;
-  flex-direction: column;
-  top: 100%;
-  right: 0;
-  z-index: 101;
-  background-color: var(--bg);
+.headers--website-4.scrolled {
+  background: var(--bg);
   box-shadow: var(--shad);
 }
-.headers--website-5 > div:nth-child(1) .lang .dropdown > div > a {
-  text-align: right;
-  display: block;
-  color: var(--g6);
-  padding: 0.4rem 1rem;
-  text-decoration: none;
-}
-.headers--website-5 > div:nth-child(1) .lang .dropdown > div > a:hover {
-  color: var(--c1);
-}
-.headers--website-5 > div:nth-child(1) .lang .dropdown > div > a.passive {
-  pointer-events: none;
-  color: var(--g3);
-}
-.headers--website-5 > div:nth-child(1) .lang > a.opened + div {
-  display: flex;
-}
-@media (max-width: 767px) {
-  .headers--website-5 > div:nth-child(1) .lang {
-    order: 2;
+@media (max-width: 1024px) {
+  .headers--website-4 {
+    grid-template-columns: auto 1fr;
   }
 }
-.headers--website-5 > div:nth-child(1) .menu-btn {
-  display: none;
-  align-items: center;
-  order: 4;
+@media (max-width: 767px) {
+  .headers--website-4 {
+    position: fixed;
+    padding-block: calc(var(--pd) / 2);
+  }
 }
-.headers--website-5 > div:nth-child(1) .menu-btn button {
-  border: none;
-  background: none;
+.headers--website-4 .logo {
   display: flex;
   align-items: center;
-}
-.headers--website-5 > div:nth-child(1) .menu-btn button svg {
-  fill: var(--g3);
-  height: 1.5rem;
-}
-.headers--website-5 > div:nth-child(1) .menu-btn button:hover svg {
-  fill: var(--c1);
-}
-.headers--website-5 > div:nth-child(1) .chat {
-  display: flex;
-  color: var(--g5);
-  font-size: 0.7rem;
-  column-gap: 1rem;
-  align-items: center;
-}
-.headers--website-5 > div:nth-child(1) .chat .btns {
-  display: flex;
-  column-gap: 0.6rem;
-}
-.headers--website-5 > div:nth-child(1) .chat .btns a {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 100%;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  color: var(--bg);
 }
-.headers--website-5 > div:nth-child(1) .chat .btns a.whatsapp {
-  background-color: #01bc24;
-}
-.headers--website-5 > div:nth-child(1) .chat .btns a.telegram {
-  background-color: var(--c1);
-}
-.headers--website-5 > div:nth-child(1) .chat .btns a.viber {
-  background-color: #7460f3;
-}
-.headers--website-5 > div:nth-child(1) .chat .btns a.messenger {
-  background: linear-gradient(180deg, #FC5C73 0%, #963AFD 51.04%, #178AFF 100%);
-}
-.headers--website-5 > div:nth-child(1) .chat .btns a svg,
-.headers--website-5 > div:nth-child(1) .chat .btns a img {
-  width: 50%;
-  fill: #fff;
-}
-@media (max-width: 767px) {
-  .headers--website-5 > div:nth-child(1) .chat {
-    order: 3;
-    justify-content: flex-end;
-  }
-  .headers--website-5 > div:nth-child(1) .chat > span {
-    display: none;
-  }
-  .headers--website-5 > div:nth-child(1) .chat .btns a {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-.headers--website-5 > div:nth-child(1) .contact {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.headers--website-5 > div:nth-child(1) .contact > div:nth-child(1) {
-  text-align: center;
-  white-space: nowrap;
-}
-.headers--website-5 > div:nth-child(1) .contact > div:nth-child(1) a {
+.headers--website-4 .logo a {
   text-decoration: none;
   font-size: 1.2rem;
-  color: var(--g5);
+  text-transform: uppercase;
+  font-weight: 800;
+  transition: color 0.2s linear;
+  color: var(--c1);
 }
-@media (max-width: 767px) {
-  .headers--website-5 > div:nth-child(1) .contact {
-    display: none;
-  }
+.headers--website-4 .logo a svg {
+  height: 3.5rem;
 }
-@media (max-width: 767px) {
-  .headers--website-5 > div:nth-child(1) {
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .headers--website-5 > div:nth-child(1) .menu-btn {
-    display: flex;
-  }
+.headers--website-4 .logo a:hover {
+  color: var(--c1);
 }
-.headers--website-5 > nav .logo,
-.headers--website-5 > nav .contacts,
-.headers--website-5 > nav .close,
-.headers--website-5 > nav .lang {
+.headers--website-4 .menu {
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.headers--website-4 .menu .logo, .headers--website-4 .menu .contacts, .headers--website-4 .menu .close, .headers--website-4 .menu .socials {
   display: none;
 }
-.headers--website-5 > nav .menu ul {
+.headers--website-4 .menu nav {
   display: flex;
-  justify-content: space-between;
-  list-style: none;
+  align-items: center;
+}
+.headers--website-4 .menu nav ul {
   padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
-.headers--website-5 > nav .menu ul li a {
-  text-decoration: none;
-  color: var(--g2);
+.headers--website-4 .menu nav ul li {
+  padding: 0;
+  margin: 0;
+}
+.headers--website-4 .menu nav ul li a {
   display: block;
-  padding: 0.1rem 0;
+  text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.01rem;
-  color: var(--g5);
+  font-size: 0.7rem;
+  letter-spacing: 0.03rem;
+  font-weight: 500;
+  color: var(--g2);
+  transition: color 0.2s linear;
 }
-.headers--website-5 > nav .menu ul li a:hover {
-  border-bottom: var(--px) dashed var(--c2);
-}
-.headers--website-5 > nav .menu ul li a.active {
+.headers--website-4 .menu nav ul li:hover a {
   color: var(--c1);
-  pointer-events: none;
 }
-@media (max-width: 767px) {
-  .headers--website-5 > nav {
+.headers--website-4 .menu nav ul li.active a {
+  color: var(--c1);
+}
+@media (max-width: 1024px) {
+  .headers--website-4 .menu {
     position: fixed;
-    left: -15rem;
+    z-index: 5;
+    left: -18rem;
     top: 0;
-    width: 15rem;
-    background: linear-gradient(180deg, var(--bg), var(--bg2) 100%);
+    width: 18rem;
+    height: 100%;
+    background-color: var(--bg);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 3rem;
     transition: transform 0.3s ease-out;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 1rem 0;
-    gap: 1rem;
-    z-index: 6;
+    gap: 1.5rem;
+    border-right: 0.25rem solid var(--c1);
   }
-  .headers--website-5 > nav .close {
-    text-decoration: none;
-    position: absolute;
-    right: -3rem;
-    top: 1rem;
-  }
-  .headers--website-5 > nav .close svg {
-    width: 2rem;
-    fill: var(--c1);
-  }
-  .headers--website-5 > nav .logo {
-    display: flex;
-    align-items: center;
-  }
-  .headers--website-5 > nav .logo > a {
-    display: block;
-  }
-  .headers--website-5 > nav .logo > a img,
-  .headers--website-5 > nav .logo > a svg {
-    height: 3rem;
-    width: auto;
-  }
-  .headers--website-5 > nav .menu {
+  .headers--website-4 .menu nav {
+    overflow-y: auto;
     flex-grow: 1;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+    width: 100%;
   }
-  .headers--website-5 > nav .menu ul {
+  .headers--website-4 .menu nav ul {
+    height: 100%;
     flex-direction: column;
-    gap: 1rem;
-    padding: 0;
+    align-items: flex-start;
   }
-  .headers--website-5 > nav .menu ul li a {
-    font-size: 1.3rem;
+  .headers--website-4 .menu nav ul li a {
+    font-size: 1.25rem;
     text-transform: none;
   }
-  .headers--website-5 > nav .lang {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .headers--website-5 > nav .lang div a {
-    display: block;
+  .headers--website-4 .menu .close {
     text-decoration: none;
-    color: var(--g4);
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
   }
-  .headers--website-5 > nav .lang div a.active {
+  .headers--website-4 .menu .close svg {
+    width: 1rem;
+    fill: var(--g6);
+  }
+  .headers--website-4 .menu .logo {
+    display: flex;
+    align-items: center;
+  }
+  .headers--website-4 .menu .logo > a {
+    display: block;
     color: var(--c1);
   }
-  .headers--website-5 > nav .lang div a img {
-    height: 1rem;
+  .headers--website-4 .menu .logo > a svg {
+    height: 2rem;
   }
-  .headers--website-5 > nav .contacts {
+  .headers--website-4 .menu .socials {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .headers--website-4 .menu .socials div a {
+    display: inline-block;
+    text-decoration: none;
+  }
+  .headers--website-4 .menu .socials div a svg {
+    stroke: var(--g1);
+    height: 1.5rem;
+    transition: stroke 0.2s linear;
+  }
+  .headers--website-4 .menu .socials div a:hover svg {
+    stroke: var(--c1);
+  }
+  .headers--website-4 .menu .contacts {
     display: flex;
     flex-direction: column;
+    width: 100%;
     align-items: center;
     gap: 0.3rem;
   }
-  .headers--website-5 > nav .contacts .ttl {
-    font-size: 0.5rem;
+  .headers--website-4 .menu .contacts .ttl {
+    font-size: 0.75rem;
     color: var(--g3);
   }
-  .headers--website-5 > nav .contacts .phone a {
+  .headers--website-4 .menu .contacts .phone a {
     display: flex;
     align-items: center;
     text-decoration: none;
     gap: 0.4rem;
   }
-  .headers--website-5 > nav .contacts .phone a svg {
+  .headers--website-4 .menu .contacts .phone a svg {
     height: 0.8rem;
     fill: var(--c1);
   }
-  .headers--website-5 > nav .contacts .phone a span {
+  .headers--website-4 .menu .contacts .phone a span {
     font-size: 1rem;
-    color: var(--c1);
+    color: var(--g6);
     font-weight: 700;
   }
-  .headers--website-5 > nav .contacts .addt {
-    font-size: 0.65rem;
-    color: var(--g4);
+  .headers--website-4 .menu .contacts .msgs {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.7rem;
+    width: 100%;
   }
-  .headers--website-5 > nav .contacts .addt a {
-    color: var(--g4);
-    border-bottom: var(--px) dashed var(--c1);
+  .headers--website-4 .menu .contacts .msgs div a {
+    display: inline-block;
     text-decoration: none;
+    color: var(--g4);
   }
-  .headers--website-5 > nav .contacts .addt a:hover {
-    border-bottom: var(--px) dashed var(--c2);
+  .headers--website-4 .menu .contacts .msgs div a svg {
+    height: 1.1rem;
   }
-  .headers--website-5 > nav.opened {
+  .headers--website-4 .menu.opened {
     transform: translate(100%, 0);
     box-shadow: 0 0 1rem 0.3rem rgba(0, 0, 0, 0.3);
   }
-  .headers--website-5 > nav.opened .close {
+  .headers--website-4 .menu.opened .close {
+    display: block;
+  }
+}
+.headers--website-4 .btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.headers--website-4 .btns .request a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--g6);
+  font-weight: 400;
+  transition: color 0.2s linear;
+}
+.headers--website-4 .btns .request a:hover {
+  color: var(--c1);
+}
+.headers--website-4 .btns .search a, .headers--website-4 .btns .call a, .headers--website-4 .btns .menu-btn a {
+  text-decoration: none;
+  color: var(--g6);
+  transition: color 0.2s linear;
+}
+.headers--website-4 .btns .search a svg, .headers--website-4 .btns .call a svg, .headers--website-4 .btns .menu-btn a svg {
+  height: 1.2rem;
+}
+.headers--website-4 .btns .search a:hover, .headers--website-4 .btns .call a:hover, .headers--website-4 .btns .menu-btn a:hover {
+  color: var(--c1);
+}
+.headers--website-4 .btns .menu-btn {
+  display: none;
+  background-color: rgba(119, 119, 119, 0.1254901961);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  padding: 0.6rem;
+}
+.headers--website-4 .btns .menu-btn a svg {
+  height: 1.3rem;
+}
+.headers--website-4 .btns .search div {
+  display: none;
+  position: absolute;
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 100%);
+  padding: 0.5rem 1rem;
+  border-radius: var(--r1);
+  z-index: 3;
+  gap: 1rem;
+  align-items: center;
+}
+.headers--website-4 .btns .search div > input {
+  border: var(--px) solid var(--brd);
+  padding: 0.5rem;
+  margin: 0;
+  font-size: 0.8rem;
+  background-color: var(--bg);
+  color: var(--g1);
+  flex-grow: 1;
+  border-radius: 0.3rem;
+}
+.headers--website-4 .btns .search div > button {
+  border: none;
+  background: none;
+  color: var(--g6);
+  font-size: 1rem;
+}
+.headers--website-4 .btns .search div > button:hover {
+  color: var(--c1);
+}
+.headers--website-4 .btns .search a.opened + div {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .headers--website-4 .btns .search {
+    position: relative;
+  }
+  .headers--website-4 .btns .search div {
+    right: 0;
+    top: calc(100% + 1rem);
+  }
+}
+@media (max-width: 767px) {
+  .headers--website-4 .btns .search div {
+    left: 0;
+    width: 100%;
+    transform: translate(0, 1rem);
+  }
+}
+.headers--website-4 .btns .language {
+  position: relative;
+}
+.headers--website-4 .btns .language a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--g6);
+}
+.headers--website-4 .btns .language a svg {
+  height: 1.2rem;
+  stroke: var(--g6);
+  transition: stroke 0.2s linear;
+}
+.headers--website-4 .btns .language a:hover svg {
+  stroke: var(--c1);
+}
+.headers--website-4 .btns .language a span {
+  display: inline-block;
+  color: var(--g6);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.headers--website-4 .btns .language div {
+  display: none;
+  position: absolute;
+  top: calc(100% + 1rem);
+  border-radius: var(--r1);
+  right: 0;
+  background: linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 100%);
+  padding: 1rem;
+  z-index: 3;
+}
+.headers--website-4 .btns .language div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.headers--website-4 .btns .language div ul li {
+  padding: 0;
+}
+.headers--website-4 .btns .language div ul li a {
+  font-size: 0.8rem;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--g2);
+  border-bottom: var(--px) dashed transparent;
+}
+.headers--website-4 .btns .language div ul li a:hover {
+  border-bottom-color: var(--c1);
+}
+.headers--website-4 .btns .language div ul li.active {
+  display: none;
+}
+.headers--website-4 .btns .language a.opened + div {
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .headers--website-4 .btns {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .headers--website-4 .btns .menu-btn {
     display: block;
   }
 }
 
-.hero {
+.heroes--hero-1 {
   position: relative;
   overflow: hidden;
   display: flex;
   width: 100%;
   z-index: 1;
 }
-.hero .bg {
+.heroes--hero-1 .bg {
   position: absolute;
-  padding-top: 3rem;
   z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.hero .bg img {
+.heroes--hero-1 .bg img {
   width: 100%;
   object-fit: contain;
   object-position: center left;
 }
-.hero .bg img[src=""] {
+.heroes--hero-1 .bg img[src=""] {
   display: none;
 }
-.hero .content {
+.heroes--hero-1 .content {
   z-index: 3;
   padding: 12rem 10rem 5rem 10rem;
   width: 100%;
 }
-.hero .content .ttl {
+.heroes--hero-1 .content .ttl {
   width: 65%;
   font-family: var(--font-header);
   color: var(--g3);
@@ -1055,43 +1776,43 @@ figure img {
   line-height: 130%;
   margin: 0;
 }
-.hero .content .ttl strong {
+.heroes--hero-1 .content .ttl strong {
   font-family: var(--font-header);
   color: var(--g6);
 }
-.hero .content .ttl span {
+.heroes--hero-1 .content .ttl span {
   font-family: var(--font-header);
   color: var(--c1);
   font-weight: 400;
 }
-.hero .content .ttl em {
+.heroes--hero-1 .content .ttl em {
   font-family: var(--font-header);
   font-weight: 400;
 }
-.hero .content .txt {
+.heroes--hero-1 .content .txt {
   width: 65%;
   margin-top: 2rem;
   color: var(--g3);
   line-height: 150%;
   font-size: 0.9rem;
 }
-.hero .content .btns {
+.heroes--hero-1 .content .btns {
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
   align-items: center;
 }
-.hero .content .btns .btn {
+.heroes--hero-1 .content .btns .btn {
   position: relative;
   padding: 1.2rem 2rem;
   font-weight: 700;
   text-decoration: none;
   line-height: 100%;
   font-size: 0.75rem;
-  border-radius: 2rem;
+  border-radius: var(--r3);
   overflow: hidden;
 }
-.hero .content .btns .btn:before {
+.heroes--hero-1 .content .btns .btn:before {
   content: "";
   position: absolute;
   background-color: var(--c1);
@@ -1101,7 +1822,7 @@ figure img {
   width: 100%;
   height: 100%;
 }
-.hero .content .btns .btn:after {
+.heroes--hero-1 .content .btns .btn:after {
   content: "";
   position: absolute;
   background-color: var(--c3);
@@ -1114,15 +1835,15 @@ figure img {
   opacity: 0.5;
   transition: width 0.5s ease-in-out;
 }
-.hero .content .btns .btn span {
+.heroes--hero-1 .content .btns .btn span {
   position: relative;
   color: var(--bg);
   z-index: 3;
 }
-.hero .content .btns .btn:hover:after {
+.heroes--hero-1 .content .btns .btn:hover:after {
   width: 200%;
 }
-.hero .content .btns .btn2 {
+.heroes--hero-1 .content .btns .btn2 {
   color: var(--g3);
   font-size: 0.75rem;
   line-height: 120%;
@@ -1132,106 +1853,526 @@ figure img {
   align-items: center;
   gap: 1rem;
 }
-.hero .content .btns .btn2 svg {
+.heroes--hero-1 .content .btns .btn2 svg {
   height: 2.4rem;
 }
-.hero .content .btns .btn2:hover {
+.heroes--hero-1 .content .btns .btn2:hover {
   color: var(--c2);
 }
-.hero .content .feats {
+.heroes--hero-1 .content .feats {
   margin-top: 3rem;
   display: flex;
   gap: 1.5rem;
   width: 80%;
 }
-.hero .content .feats > div {
+.heroes--hero-1 .content .feats > div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   background-color: #ffffff;
   color: var(--g3);
   padding: 1rem;
-  border-radius: 2rem;
+  border-radius: var(--r3);
   box-shadow: 0 0 5rem 0.1rem rgba(0, 0, 0, 0.1);
 }
-.hero .content .feats > div > img {
+.heroes--hero-1 .content .feats > div > img {
   height: 2.5rem;
 }
-.hero .content .feats > div > span {
+.heroes--hero-1 .content .feats > div > span {
   color: var(--g3);
   font-size: 0.6rem;
   line-height: 130%;
 }
 @media (max-width: 991px) {
-  .hero .bg {
-    padding-top: 5rem;
-  }
-  .hero .content {
+  .heroes--hero-1 .content {
     padding-left: 4rem;
     padding-right: 4rem;
   }
-  .hero .content .ttl {
+  .heroes--hero-1 .content .ttl {
     font-size: 2.2rem;
     width: 75%;
   }
-  .hero .content .feats {
+  .heroes--hero-1 .content .feats {
     width: 100%;
   }
 }
 @media (max-width: 767px) {
-  .hero .bg {
+  .heroes--hero-1 .bg {
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
     height: auto;
     aspect-ratio: 9/16;
-    padding-top: 0;
-    top: 3rem;
   }
-  .hero .bg img {
+  .heroes--hero-1 .bg img {
     width: 100%;
     object-fit: cover;
     object-position: 76% 0;
     opacity: 0.5;
   }
-  .hero .content {
+  .heroes--hero-1 .content {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 9rem;
     width: 100%;
   }
-  .hero .content .ttl {
+  .heroes--hero-1 .content .ttl {
     font-size: 1.7rem;
     line-height: 150%;
     width: 80%;
   }
-  .hero .content .ttl em {
+  .heroes--hero-1 .content .ttl em {
     color: var(--g6);
   }
-  .hero .content .txt {
+  .heroes--hero-1 .content .txt {
     color: var(--g6);
     font-size: 0.9rem;
     font-weight: 700;
     width: 100%;
   }
-  .hero .content .btns {
+  .heroes--hero-1 .content .btns {
     gap: 0;
     justify-content: space-between;
   }
-  .hero .content .btns .btn2 {
+  .heroes--hero-1 .content .btns .btn2 {
     color: var(--c2);
     font-weight: 700;
     font-size: 0.75rem;
   }
-  .hero .content .feats {
+  .heroes--hero-1 .content .feats {
     flex-direction: column;
   }
-  .hero .content .feats > div {
+  .heroes--hero-1 .content .feats > div {
     width: 100%;
     gap: 1rem;
   }
-  .hero .content .feats > div > span {
+  .heroes--hero-1 .content .feats > div > span {
     font-size: 0.85rem;
+  }
+}
+
+.list--blog-1 {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.list--blog-1 > .title {
+  margin: 0 auto;
+  width: 80%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--g5);
+  letter-spacing: 0.1rem;
+  font-family: var(--font-header);
+}
+@media (max-width: 991px) {
+  .list--blog-1 > .title {
+    width: 100%;
+  }
+}
+.list--blog-1 > .text {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 110%;
+  font-weight: 400;
+  color: var(--g3);
+}
+.list--blog-1 .cont {
+  padding-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.list--blog-1 .cont .re3 {
+  flex: 0 0 calc(25% - 1.5rem);
+  text-decoration: none;
+  background-color: #fff;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 991px) {
+  .list--blog-1 .cont .re3 {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+@media (max-width: 767px) {
+  .list--blog-1 .cont .re3 {
+    flex: 0 0 100%;
+  }
+}
+.list--blog-1 .cont .re3 .pic {
+  width: 100%;
+  height: 17rem;
+  border-radius: var(--r2);
+  box-shadow: 0.3rem 0.3rem 0.7rem 0.25rem #ddd;
+  overflow: hidden;
+}
+.list--blog-1 .cont .re3 .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--r1);
+}
+.list--blog-1 .cont .re3 .title {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+  line-height: 140%;
+  text-align: left;
+}
+.list--blog-1 .cont .re3 .title:hover {
+  color: var(--c1);
+}
+.list--blog-1 .cont .re3 .txt {
+  color: var(--c1);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  color: #777;
+  line-height: 160%;
+}
+.list--blog-1 .cont .re3 .path {
+  margin-bottom: 0.5rem;
+  color: #aaa;
+  font-size: 0.75rem;
+  font-weight: 100;
+  text-align: left;
+}
+.list--blog-1 .cont .re3 .params {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.list--blog-1 .cont .re3 .params > div:nth-child(1) {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-weight: 400;
+  color: #555;
+}
+.list--blog-1 .cont .re3 .params > div:nth-child(2) {
+  font-size: 0.65rem;
+  line-height: 1.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.list--blog-1 .cont .re3 .pd15 {
+  border: 1px solid #fafafa;
+  border-top: none;
+}
+.list--blog-1 .cont .re3:hover > a {
+  box-shadow: 0 0 1rem 0.33rem rgba(0, 0, 0, 0.2);
+}
+.list--blog-1 .cont .re3:hover .pic > div > div > div {
+  transform: scale(1.1);
+}
+.list--blog-1 .cont .re3:hover .title {
+  color: var(--c1);
+}
+.list--blog-1 .cont.featured .re3:nth-child(1),
+.list--blog-1 .cont.featured .re3:nth-child(2) {
+  flex: 0 0 calc(50% - 1.5rem);
+}
+@media (max-width: 991px) {
+  .list--blog-1 .cont.featured .re3:nth-child(1),
+  .list--blog-1 .cont.featured .re3:nth-child(2) {
+    flex: 0 0 100%;
+  }
+}
+@media (max-width: 767px) {
+  .list--blog-1 .cont.featured .re3:nth-child(1),
+  .list--blog-1 .cont.featured .re3:nth-child(2) {
+    flex: 0 0 100%;
+  }
+}
+
+.lists--cost-2 {
+  padding-top: 4rem;
+  padding-block: var(--pd2);
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+.lists--cost-2 .ttl {
+  font-weight: 400;
+  font-size: 2.2rem;
+  line-height: 130%;
+  font-family: var(--font-text-cond);
+  margin: 0;
+}
+.lists--cost-2 .scrollable {
+  width: 100%;
+}
+.lists--cost-2 .scrollable .container {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+}
+.lists--cost-2 .scrollable .container .item {
+  width: 100%;
+  width: 70%;
+  row-gap: 1rem;
+  box-shadow: 0 0.4rem 0.7rem 0.2rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: border 0.25s linear;
+  overflow: hidden;
+  transition: transform 0.2s linear;
+  position: relative;
+  border-radius: 1rem;
+}
+@media (max-width: 991px) {
+  .lists--cost-2 .scrollable .container .item {
+    width: 85%;
+  }
+}
+@media (max-width: 767px) {
+  .lists--cost-2 .scrollable .container .item {
+    width: 100%;
+  }
+}
+.lists--cost-2 .scrollable .container .item label {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-decoration: none;
+  width: 100%;
+}
+.lists--cost-2 .scrollable .container .item label .ttl {
+  display: flex;
+  width: 100%;
+  background-color: var(--c8);
+  transition: background 0.2s linear;
+  position: relative;
+  overflow: hidden;
+  padding-right: 5rem;
+}
+.lists--cost-2 .scrollable .container .item label .ttl > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--g6);
+  flex-grow: 1;
+  line-height: 110%;
+  padding: 1rem 2rem;
+  width: calc(100% - 5rem);
+}
+.lists--cost-2 .scrollable .container .item label .ttl > div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  color: var(--bg);
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  background-color: var(--c1);
+}
+.lists--cost-2 .scrollable .container .item label .ttl > div:nth-child(2) svg {
+  width: 2rem;
+}
+@media (max-width: 767px) {
+  .lists--cost-2 .scrollable .container .item label .ttl {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .lists--cost-2 .scrollable .container .item label .ttl > div:nth-child(1) {
+    font-size: 0.9rem;
+    line-height: 140%;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+.lists--cost-2 .scrollable .container .item label input {
+  visibility: hidden;
+  position: absolute;
+  left: -1000rem;
+}
+.lists--cost-2 .scrollable .container .item label > .cons {
+  display: none;
+  padding: 2rem;
+}
+.lists--cost-2 .scrollable .container .item label input:checked ~ .ttl {
+  background-color: var(--c1);
+}
+.lists--cost-2 .scrollable .container .item label input:checked ~ .ttl > div:nth-child(1),
+.lists--cost-2 .scrollable .container .item label input:checked ~ .ttl > div:nth-child(2) {
+  color: var(--bg);
+}
+.lists--cost-2 .scrollable .container .item label input:checked ~ .ttl > div:nth-child(2) {
+  opacity: 0.3;
+}
+.lists--cost-2 .scrollable .container .item label input:checked ~ .cons {
+  display: block;
+}
+.lists--cost-2 .scrollable .container .item:hover {
+  transform: translate(0, 0.5rem);
+}
+.lists--cost-2 .scrollable .container .item:hover label > .ttl {
+  background-color: var(--c1);
+}
+.lists--cost-2 .scrollable .container .item:hover label > .ttl > div:nth-child(1),
+.lists--cost-2 .scrollable .container .item:hover label > .ttl > div:nth-child(2) {
+  color: var(--bg);
+}
+
+.features-block {
+  display: flex;
+  flex-direction: column;
+  padding-block: 2rem;
+}
+.features-block > .bt, .features-block .bb {
+  vertical-align: middle;
+  width: 100%;
+  color: var(--bg2);
+}
+.features-block > .bt img, .features-block > .bt svg, .features-block .bb img, .features-block .bb svg {
+  width: 100%;
+}
+.features-block .bb {
+  margin-top: -1px;
+}
+.features-block > .cont {
+  margin-top: -1px;
+  padding-block: 2rem;
+  padding-inline: var(--pd);
+  background-color: var(--bg2);
+}
+.features-block > .cont > .title {
+  margin: 0 auto;
+  width: 80%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--g5);
+  letter-spacing: 0.1rem;
+  font-family: var(--font-header);
+}
+@media (max-width: 991px) {
+  .features-block > .cont > .title {
+    width: 100%;
+  }
+}
+.features-block > .cont > .text {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 110%;
+  font-weight: 400;
+  color: var(--g3);
+}
+.features-block > .cont .list {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 4rem;
+}
+.features-block > .cont .list .item {
+  margin-top: 2rem;
+  width: calc(33.3333333333% - 1.3333333333rem);
+  background-color: var(--bg);
+  padding: 2rem 0 0 0;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shad);
+  position: relative;
+}
+.features-block > .cont .list .item .bg {
+  width: 100%;
+  height: 7rem;
+}
+.features-block > .cont .list .item .bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+.features-block > .cont .list .item .num {
+  display: flex;
+  font-size: 4rem;
+  color: var(--g1);
+  position: absolute;
+  top: -3rem;
+  left: 2rem;
+  z-index: 2;
+}
+.features-block > .cont .list .item .ttl {
+  font-weight: 700;
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+  padding: 2rem 2rem 0 2rem;
+}
+.features-block > .cont .list .item .desc {
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+  font-size: 0.8rem;
+  line-height: 160%;
+  color: var(--g4);
+  padding: 0 2rem;
+}
+.features-block > .cont .list .item .desc a {
+  text-decoration: none;
+  color: var(--c1);
+}
+.features-block > .cont .list .item .btn {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding: 0 2rem 2rem 2rem;
+}
+.features-block > .cont .list .item .btn a {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  border: 0.1rem solid #67C15E;
+  border-radius: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+}
+.features-block > .cont .list .item .btn a > svg {
+  height: 1rem;
+}
+.features-block > .cont .list .item .btn a > span {
+  color: #67C15E;
+  font-size: 0.9rem;
+}
+.features-block > .cont .list .item .btn a:hover {
+  background-color: #e5ffe3;
+}
+@media (max-width: 767px) {
+  .features-block > .cont .list {
+    flex-wrap: wrap;
+  }
+  .features-block > .cont .list .item {
+    width: 100%;
   }
 }
 
@@ -1282,7 +2423,7 @@ figure img {
 }
 .services .cont > .item {
   width: calc(33.3333333333% - 1.3333333333rem);
-  border-radius: 1.5rem;
+  border-radius: var(--r3);
   overflow: hidden;
   aspect-ratio: 1/1;
   position: relative;
@@ -1359,6 +2500,866 @@ figure img {
   }
   .services .cont > .item > .ttl {
     font-size: 1.3rem;
+  }
+}
+
+.services-ext {
+  padding-top: 4rem;
+}
+@media (max-width: 1199px) {
+  .services-ext {
+    padding-top: 2rem;
+  }
+}
+@media (max-width: 991px) {
+  .services-ext {
+    padding-top: 0;
+  }
+}
+.services-ext > .title {
+  margin: 0 auto;
+  width: 80%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 160%;
+  color: var(--g5);
+  letter-spacing: 0.1rem;
+  font-family: var(--font-header);
+}
+@media (max-width: 991px) {
+  .services-ext > .title {
+    width: 100%;
+  }
+}
+.services-ext > .text {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 110%;
+  font-weight: 400;
+  color: var(--g3);
+}
+.services-ext .cont {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.services-ext .cont > .item {
+  width: calc(33.3333333333% - 1.3333333333rem);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom: var(--px) solid var(--c1);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s linear;
+}
+.services-ext .cont > .item > a {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  position: relative;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+.services-ext .cont > .item > a > .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.services-ext .cont > .item > a > .bg:before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--gr2);
+  opacity: 0.5;
+  transition: all 0.2s linear;
+}
+.services-ext .cont > .item > a > .bg:after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--gr1);
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+.services-ext .cont > .item > a > .bg > img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.services-ext .cont > .item > a > .ttl {
+  position: relative;
+  z-index: 2;
+  color: var(--bg);
+  font-size: 1.7rem;
+  font-family: var(--font-header);
+  transition: all 0.2s linear;
+}
+.services-ext .cont > .item > div {
+  padding: 2rem;
+  flex-grow: 1;
+  font-size: 0.75rem;
+}
+.services-ext .cont > .item > div ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.services-ext .cont > .item > div ul li {
+  margin: 0;
+  padding: 0 0 0 1.3rem;
+  font-size: 0.75rem;
+  position: relative;
+  color: var(--g4);
+}
+.services-ext .cont > .item > div ul li a {
+  text-decoration: none;
+  color: var(--c1);
+}
+.services-ext .cont > .item > div ul li a:hover {
+  text-decoration: underline;
+}
+.services-ext .cont > .item > div ul li:before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  width: 0.7rem;
+  height: var(--px);
+  z-index: 1;
+  background-color: var(--c1);
+}
+.services-ext .cont > .item:hover {
+  box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+.services-ext .cont > .item:hover > a .bg:before {
+  opacity: 0;
+}
+.services-ext .cont > .item:hover > a .bg:after {
+  opacity: 0.5;
+}
+.services-ext .cont > .item:hover > a .ttl {
+  transform: translate(0, -0.5rem);
+  color: var(--bg);
+}
+@media (max-width: 991px) {
+  .services-ext .cont > .item > a > .ttl {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 767px) {
+  .services-ext .cont > .item {
+    width: 100%;
+  }
+  .services-ext .cont > .item > a > .ttl {
+    font-size: 1.3rem;
+  }
+}
+
+.why-block {
+  padding-block: 4rem;
+  padding-inline: var(--pd);
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .why-block {
+    gap: 2rem;
+  }
+}
+.why-block .c1 {
+  width: calc(50% - 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media (max-width: 991px) {
+  .why-block .c1 {
+    width: 100%;
+  }
+}
+.why-block .c1 .title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--g5);
+  text-transform: uppercase;
+  line-height: 160%;
+  letter-spacing: 0.1rem;
+  font-family: var(--font-header);
+}
+.why-block .c1 .text {
+  font-size: 1rem;
+  color: var(--g4);
+  line-height: 160%;
+}
+.why-block .c1 .text img {
+  width: 100%;
+  border-radius: 1.5rem;
+}
+.why-block .c2 {
+  width: calc(50% - 2rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+@media (max-width: 991px) {
+  .why-block .c2 {
+    width: 100%;
+  }
+}
+.why-block .c2 > .i {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: calc(33.3333333333% - 1.3333333333rem);
+}
+@media (max-width: 767px) {
+  .why-block .c2 > .i {
+    width: calc(50% - 1rem);
+  }
+}
+.why-block .c2 > .i > .img {
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+}
+.why-block .c2 > .i > .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+.why-block .c2 > .i .ttl {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--g5);
+}
+.why-block .c2 > .i .dsc {
+  font-size: 0.7rem;
+  color: var(--g4);
+}
+.why-block .btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.why-block .btns > a {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  border: 0.1rem solid #67C15E;
+  border-radius: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+}
+.why-block .btns > a > svg {
+  height: 1rem;
+}
+.why-block .btns > a > span {
+  color: #67C15E;
+  font-size: 0.9rem;
+}
+.why-block .btns > a:hover {
+  background-color: #e5ffe3;
+}
+
+.widgets--free-2 {
+  padding-inline: var(--pd);
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.widgets--free-2 h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-top: 3rem;
+  margin-inline: auto;
+  width: 70%;
+  text-align: center;
+}
+.widgets--free-2 h2 {
+  font-weight: 400;
+  margin-top: 3rem;
+}
+.widgets--free-2 h3 {
+  font-weight: 400;
+  margin-top: 3rem;
+}
+.widgets--free-2 .cntnt {
+  position: relative;
+}
+.widgets--free-2 .cntnt > .img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: calc(45% - 3rem);
+  z-index: 2;
+}
+.widgets--free-2 .cntnt > .img img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--r3);
+}
+.widgets--free-2 .cntnt > .cont {
+  position: relative;
+  z-index: 2;
+  width: 55%;
+}
+.widgets--free-2 .cntnt > .cont .l1 {
+  display: flex;
+  column-gap: 4rem;
+}
+.widgets--free-2 .cntnt > .cont .l1 .items {
+  width: calc(33.3333333333% - 2.6666666667rem);
+  display: flex;
+  flex-direction: column;
+}
+.widgets--free-2 .cntnt > .cont .l1 .items .img {
+  width: 50%;
+  aspect-ratio: 1/1;
+}
+.widgets--free-2 .cntnt > .cont .l1 .items .img img {
+  width: 100%;
+}
+.widgets--free-2 .cntnt > .cont .l1 .items .ttl {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.widgets--free-2 .cntnt > .cont .l1 .items .dsc {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.widgets--free-2 .cntnt > .cont .l2 {
+  display: flex;
+  column-gap: 1rem;
+}
+.widgets--free-2 .cntnt > .cont .l2 .items {
+  width: calc(25% - 0.75rem);
+}
+.widgets--free-2 .cntnt > .cont .l2 .items .num {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.widgets--free-2 .cntnt > .cont .l2 .items .dsc {
+  font-size: 0.8rem;
+}
+.widgets--free-2 .flst {
+  display: flex;
+  flex-direction: column;
+}
+.widgets--free-2 .flst h2 {
+  font-size: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.widgets--free-2 .flst .cont {
+  position: relative;
+  display: flex;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.widgets--free-2 .flst .cont .text {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  text-align: center;
+  font-size: 6.5vw;
+  letter-spacing: 4vw;
+  color: var(--g1);
+}
+.widgets--free-2 .flst .cont .l3 {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
+}
+.widgets--free-2 .flst .cont .l3 .items {
+  width: calc(25% - 0.75rem);
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .widgets--free-2 h1 {
+    width: 100%;
+    line-height: 120%;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+  .widgets--free-2 .cntnt {
+    z-index: 2;
+  }
+  .widgets--free-2 .cntnt > .img {
+    width: 100%;
+    position: relative;
+    height: auto;
+    aspect-ratio: 1/1;
+    padding-bottom: 2rem;
+  }
+  .widgets--free-2 .cntnt .cont {
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+  .widgets--free-2 .cntnt .cont > .l1 {
+    gap: 1rem;
+  }
+  .widgets--free-2 .cntnt .cont > .l1 .items {
+    width: calc(33.3333333333% - 0.6666666667rem);
+  }
+  .widgets--free-2 .cntnt .cont > .l2 {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .widgets--free-2 .cntnt .cont > .l2 .items {
+    width: calc(50% - 0.5rem);
+  }
+  .widgets--free-2 .flst h2 {
+    line-height: 120%;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+  .widgets--free-2 .flst .cont .text {
+    display: none;
+  }
+  .widgets--free-2 .flst .cont .l3 {
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .widgets--free-2 .flst .cont .l3 .items {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.widgets--re-1 {
+  padding-inline: var(--pd);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.widgets--re-1 .gallery {
+  padding-bottom: 1rem;
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+}
+.widgets--re-1 .gallery > .scroll {
+  overflow: hidden;
+  transform: translate(0, -2rem);
+}
+.widgets--re-1 .gallery > .scroll > .cont {
+  transform: translate(0, 2rem);
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 1rem 0 3rem 0;
+  gap: 0;
+  scroll-padding: 0;
+}
+.widgets--re-1 .gallery > .scroll > .cont > .item {
+  display: flex;
+  flex: 0 0 100%;
+  position: relative;
+  scroll-snap-align: start;
+  padding: 0;
+  flex-direction: column;
+}
+.widgets--re-1 .gallery > .scroll > .cont > .item > a > img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: var(--r3);
+}
+.widgets--re-1 .gallery .nav {
+  margin-top: -2rem;
+  display: flex;
+  justify-content: center;
+  column-gap: 1rem;
+  align-items: center;
+}
+.widgets--re-1 .gallery .nav > div a {
+  display: block;
+  text-decoration: none;
+  color: var(--color-additional);
+  font-size: 1.35rem;
+  padding: 0 1rem;
+  transition: transform 0.3s linear;
+}
+.widgets--re-1 .gallery .nav > div a svg {
+  fill: var(--c2);
+  height: 1rem;
+}
+.widgets--re-1 .gallery .nav > div a.left:hover {
+  transform: translateX(-0.2rem);
+}
+.widgets--re-1 .gallery .nav > div a.right:hover {
+  transform: translateX(0.2rem);
+}
+.widgets--re-1 .gallery .nav > div.dots {
+  display: flex;
+  column-gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.widgets--re-1 .gallery .nav > div.dots span {
+  width: 0.3rem;
+  height: 0.3rem;
+  background-color: var(--g3);
+  border-radius: 50%;
+}
+.widgets--re-1 .gallery .nav > div.dots span.active {
+  background-color: var(--c1);
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.widgets--re-1 h1 {
+  margin: 0;
+}
+.widgets--re-1 .panels {
+  display: flex;
+  gap: 2rem;
+}
+.widgets--re-1 .panels .left {
+  flex: 0 0 calc(66.6666666667% - 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.widgets--re-1 .panels .left > div:not(:nth-last-child(1)) {
+  border-bottom: var(--px) solid var(--g1);
+  padding-bottom: 2rem;
+}
+.widgets--re-1 .panels .left .characteristics {
+  display: flex;
+  flex-direction: column;
+}
+.widgets--re-1 .panels .left .characteristics .cont {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+.widgets--re-1 .panels .left .characteristics .cont > div {
+  display: flex;
+  flex: 0 0 calc(50% - 1rem);
+}
+.widgets--re-1 .panels .left .characteristics .cont > div > div:nth-child(1) {
+  color: var(--g2);
+}
+.widgets--re-1 .panels .left .characteristics .cont > div > div:nth-child(2) {
+  border-bottom: var(--px) dashed var(--g2);
+  flex-grow: 1;
+}
+.widgets--re-1 .panels .left .characteristics .cont > div > div:nth-child(3) {
+  color: var(--g6);
+  font-weight: 700;
+}
+.widgets--re-1 .panels .left .characteristics .cont > div > div:nth-child(3) sup {
+  line-height: 0;
+}
+@media (max-width: 767px) {
+  .widgets--re-1 .panels .left .characteristics .cont > div {
+    flex: 0 0 100%;
+  }
+}
+.widgets--re-1 .panels .left .options .cont {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.widgets--re-1 .panels .left .options .cont > div {
+  background-color: var(--bg2);
+  border: var(--px) solid var(--g1);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  display: flex;
+}
+.widgets--re-1 .panels .left .options .cont > div svg {
+  height: 1rem;
+}
+.widgets--re-1 .panels .left .options .cont > div span {
+  flex-grow: 1;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+}
+.widgets--re-1 .panels .right {
+  flex: 0 0 calc(33.3333333333% - 1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.widgets--re-1 .panels .right > div {
+  box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+.widgets--re-1 .panels .right .price {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r3);
+}
+.widgets--re-1 .panels .right .price h2 {
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+.widgets--re-1 .panels .right .price .ttl {
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--g3);
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.widgets--re-1 .panels .right .price .cost {
+  font-size: 1.5rem;
+  color: var(--g6);
+}
+.widgets--re-1 .panels .right .price .cost span {
+  color: var(--c1);
+}
+.widgets--re-1 .panels .right .price .costsqm {
+  color: var(--g2);
+  font-size: 0.6rem;
+}
+.widgets--re-1 .panels .right .price .costsqm sup {
+  line-height: 0;
+}
+.widgets--re-1 .panels .right .contact-form {
+  border-radius: var(--r3);
+  background-color: var(--bg2);
+}
+.widgets--re-1 .panels .right .contact-form h2 {
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+.widgets--re-1 .panels .right .contact-form .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 767px) {
+  .widgets--re-1 .panels {
+    flex-direction: column;
+  }
+  .widgets--re-1 .panels .left,
+  .widgets--re-1 .panels .right {
+    flex: 0 0 100%;
+  }
+}
+
+.text-block {
+  padding-inline: var(--pd);
+  padding-block: var(--pd);
+}
+.text-block h1, .text-block h2, .text-block h3, .text-block h4, .text-block h5, .text-block h6 {
+  text-align: center;
+}
+.text-block figure {
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.text-block figure img {
+  width: 100%;
+}
+.text-block table {
+  border: none;
+  width: 100%;
+}
+.text-block table th {
+  background-color: var(--c3);
+  padding: 0.3rem 0.6rem;
+}
+.text-block table tr > td {
+  padding: 0.3rem 0.6rem;
+}
+.text-block table tr:nth-child(2n) > td {
+  background-color: #eeeeee;
+}
+.text-block p {
+  width: 70%;
+  margin-inline: auto;
+  line-height: 180%;
+  letter-spacing: 0.01rem;
+}
+@media (max-width: 991px) {
+  .text-block p {
+    width: 100%;
+  }
+}
+.text-block ol, .text-block ul {
+  width: 70%;
+  margin-inline: auto;
+}
+@media (max-width: 991px) {
+  .text-block ol, .text-block ul {
+    width: 100%;
+  }
+}
+.text-block:empty {
+  display: none;
+}
+
+.cta-2 {
+  position: relative;
+  margin-block: 2rem;
+}
+.cta-2 .bg {
+  background: linear-gradient(to bottom, var(--c1) 0%, var(--c2) 100%);
+  border-radius: var(--r2);
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: calc(100% - 2rem);
+  top: 1rem;
+  left: 0;
+}
+.cta-2 .cont {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 2rem;
+  padding: 0 4rem 0 6rem;
+  align-items: center;
+}
+.cta-2 .cont .img {
+  width: 10rem;
+  border-radius: 50%;
+  height: 100%;
+  overflow: hidden;
+  border: 0.5rem solid var(--c3);
+}
+.cta-2 .cont .img img {
+  aspect-ratio: 1/1;
+  width: 100%;
+  object-fit: cover;
+}
+.cta-2 .cont .txt {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  gap: 0.5rem;
+}
+.cta-2 .cont .txt .ttl {
+  font-size: 2rem;
+  color: var(--bg);
+  font-family: var(--font-header);
+  line-height: 130%;
+}
+.cta-2 .cont .txt .desc {
+  color: var(--bg);
+  font-size: 0.85rem;
+}
+.cta-2 .cont .cta-btn {
+  padding: 2rem 0;
+  position: relative;
+}
+.cta-2 .cont .cta-btn a {
+  position: relative;
+  display: flex;
+  padding: 1.2rem 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 100%;
+  font-size: 0.75rem;
+  border-radius: var(--r3);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.cta-2 .cont .cta-btn a:before {
+  content: "";
+  position: absolute;
+  background-color: var(--c5);
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.cta-2 .cont .cta-btn a:after {
+  content: "";
+  position: absolute;
+  background-color: var(--c3);
+  z-index: 2;
+  left: -50%;
+  top: -100%;
+  width: 50%;
+  height: 300%;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: width 0.5s ease-in-out;
+}
+.cta-2 .cont .cta-btn a span {
+  position: relative;
+  color: var(--bg);
+  z-index: 3;
+}
+.cta-2 .cont .cta-btn a:hover:after {
+  width: 200%;
+}
+@media (max-width: 991px) {
+  .cta-2 .cont {
+    padding-left: 4rem;
+  }
+}
+@media (max-width: 767px) {
+  .cta-2 .bg {
+    top: 2.5rem;
+    height: calc(100% - 2.5rem);
+  }
+  .cta-2 .cont {
+    flex-direction: column;
+    padding: 0 1rem 2rem 1rem;
+    gap: 1rem;
+  }
+  .cta-2 .cont .txt {
+    padding: 0;
+  }
+  .cta-2 .cont .txt .ttl {
+    text-align: center;
+    line-height: 110%;
+  }
+  .cta-2 .cont .txt .desc {
+    text-align: center;
+  }
+  .cta-2 .cont .cta-btn {
+    padding: 0;
   }
 }
 

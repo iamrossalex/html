@@ -1,0 +1,132 @@
+.cta-2 {
+	position: relative;
+	margin-block: 2rem;
+	.bg	{
+		background: var(--gr1);
+		border-radius: 1rem;
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: calc(100% - 2rem);
+		top: 1rem;
+		left: 0;
+	}
+	.cont {
+		position: relative;
+		z-index: 2;
+		display: flex;
+		gap: 2rem;
+		padding: 0 4rem 0 6rem;
+		align-items: center;
+		.img {
+			width: 10rem;
+			border-radius: 50%;
+			height: 100%;
+			overflow: hidden;
+			border: .5rem solid var(--c3);
+			img {
+				aspect-ratio: 1 / 1;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+		.txt {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			padding: 2rem 0;
+			gap: .5rem;
+			.ttl {
+				font-size: 2rem;
+				color: var(--bg);
+				font-family: var(--font-header);
+				line-height: 130%;
+			}
+			.desc {
+				color: var(--bg);
+				font-size: .85rem;
+			}
+		}
+		.cta-btn {
+			padding: 2rem 0;
+			position: relative;
+			a {
+				position: relative;
+				display: flex;
+				padding: 1.2rem 2rem;
+				font-weight: 700;
+				text-decoration: none;
+				line-height: 100%;
+				font-size: .75rem;
+				border-radius: 2rem;
+				overflow: hidden;
+				white-space: nowrap;
+				&:before {
+					content: "";
+					position: absolute;
+					background-color: var(--c5);
+					z-index: 1;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+				&:after {
+					content: "";
+					position: absolute;
+					background-color: var(--c3);
+					z-index: 2;
+					left: -50%;
+					top: -100%;
+					width: 50%;
+					height: 300%;
+					border-radius: 50%;
+					opacity: .5;
+					transition: width .5s ease-in-out;
+				}
+				span {
+					position: relative;
+					color: var(--bg);
+					z-index: 3;
+				}
+				&:hover{
+					&:after {
+						width: 200%;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 991px) {
+		.cont {
+			padding-left: 4rem;
+		}
+	}
+	@media (max-width: 767px) {
+		.bg {
+			top: 2.5rem;
+			height: calc(100% - 2.5rem);
+		}
+		.cont {
+			flex-direction: column;
+			padding: 0 1rem 2rem 1rem;
+			gap: 1rem;
+			.img {
+
+			}
+			.txt {
+				padding: 0;
+				.ttl {
+					text-align: center;
+					line-height: 110%
+				}
+				.desc {
+					text-align: center;
+				}
+			}
+			.cta-btn {
+				padding: 0;
+			}
+		}
+	}
+}

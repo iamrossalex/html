@@ -1,0 +1,217 @@
+.cart--re-1 {
+	padding-inline: var(--pd);
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	.gallery{
+		padding-bottom: 1rem;
+		display: flex;
+		gap: 0;
+		flex-direction: column;
+		>.scroll {
+			overflow:hidden;
+			transform: translate(0, -2rem);
+			>.cont {
+				transform: translate(0, 2rem);
+				display: flex;
+				overflow-x: scroll;
+				scroll-snap-type: x mandatory;
+				scroll-behavior: smooth;
+				padding: 1rem 0 3rem 0;
+				gap: 0;
+				scroll-padding: 0;
+				>.item {
+					display: flex;
+					flex: 0 0 100%;
+					position: relative;
+					scroll-snap-align: start;
+					padding: 0;
+					flex-direction: column;
+					>a {
+						>img {
+							width: 100%;
+							aspect-ratio: 16 / 9;
+							object-fit: cover;
+						}
+					}
+				}
+			}
+		}
+		.nav {
+			margin-top: -2rem;
+			display:flex;
+			justify-content: center;
+			column-gap: 1rem;
+			align-items: center;
+			>div {
+				a {
+					display:block;
+					text-decoration: none;
+					color:var(--color-additional);
+					font-size: 1.35rem;
+					padding:0 1rem;
+					transition: transform .3s linear;
+					svg {
+						fill: var(--c2);
+						height: 1rem;
+					}
+					&.left:hover {transform: translateX(-.2rem);}
+					&.right:hover {transform: translateX(.2rem);}
+				}
+			}
+			>div.dots {
+				display: flex;
+				column-gap: .5rem;
+				justify-content: center;
+				align-items: center;
+				span {
+					width: .3rem;
+					height: .3rem;
+					background-color: var(--g3);
+					border-radius: 50%;
+					&.active {
+						background-color: var(--c1);
+						width: .4rem;
+						height: .4rem;
+					}
+				}
+			}
+		}
+	
+	}
+	h1 {
+		margin:0;
+	}
+	.panels{
+		display: flex;
+		gap: 2rem;
+		.left {
+			flex:0 0 calc(100% / 3 * 2 - 1rem);
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			>div:not(:nth-last-child(1)) {
+				border-bottom: var(--px) solid var(--g1);
+				padding-bottom: 2rem;
+			}
+			.characteristics {
+				display: flex;
+				flex-direction: column;
+				.cont {
+					display: flex;
+					flex-wrap: wrap;
+					column-gap: 2rem;
+					row-gap: 1rem;
+					>div {
+						display: flex;
+						flex: 0 0 calc(50% - 1rem);
+						>div:nth-child(1){
+							color: var(--g2);
+						}
+						>div:nth-child(2){
+							border-bottom: var(--px) dashed var(--g2);
+							flex-grow: 1;
+						}
+						>div:nth-child(3){
+							color: var(--g6);
+							font-weight: 700;
+							sup {line-height: 0;}
+						}
+					}
+					@media (max-width: 767px) {
+						>div {
+							flex: 0 0 100%;
+						}
+					}
+				}
+			}
+			.options {
+				.cont {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 1rem;
+					>div {
+						background-color: var(--bg2);
+						border: var(--px) solid var(--g1);
+						border-radius: .3rem;
+						padding: .5rem;
+						display: flex;
+						svg {
+							height: 1rem;
+						}
+						span {
+							flex-grow: 1;
+							font-size: .7rem;
+							font-weight: 700;
+							letter-spacing: .05rem;
+							text-transform: uppercase;
+						}
+					}
+				}
+			}
+			.description {
+
+			}
+		}
+		.right {
+			flex:0 0 calc(100% / 3 - 1rem);
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			>div {
+				box-shadow: 0 0 1rem .1rem rgba(0,0,0,.1);
+				padding: 2rem;
+			}
+			.price {
+				display: flex;
+				flex-direction: column;
+				h2 {
+					margin: 0;
+					padding-bottom: .5rem;
+				}
+				.ttl {
+					font-weight: 700;
+					font-size: .8rem;
+					color: var(--g3);
+					padding-bottom: .5rem;
+					text-transform: uppercase;
+				}
+				.cost {
+					font-size: 1.5rem;
+					color: var(--g6);
+					span {
+						color: var(--c1);
+					}
+				}
+				.costsqm {
+					color: var(--g2);
+					font-size: .6rem;
+					sup {
+						line-height: 0;
+					}
+				}
+			}
+			.contact {
+			}
+			.contact-form {
+				background-color: var(--bg2);
+				h2 {
+					margin: 0;
+					padding-bottom: .5rem;
+				}
+				.form {
+					display: flex;
+					flex-direction: column;
+					gap: 1rem;
+				}
+			}
+		}
+		@media (max-width: 767px) {
+			flex-direction: column;
+			.left,
+			.right {
+				flex:0 0 100%;
+			}
+		}
+	}
+}

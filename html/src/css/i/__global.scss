@@ -67,7 +67,17 @@ html, body {display: flex; margin: 0; padding: 0; width: 100%; height: 100%; ove
 a, button, input[type=submit] {outline: none;}
 a {color: var(--c1);}
 body {position: relative;display: flex;flex-direction: column;}
-body>main {flex-grow: 1;display: flex;flex-direction: column;}
+body>main {
+	flex-grow: 1;
+	display: grid;
+	grid-template-columns: [full-start] var(--pd) [content-start] 1fr [content-end] var(--pd) [full-end];
+	>:not(.full) {
+		grid-column: content;
+	}
+	>.full {
+		grid-column: full;
+	}
+}
 
 figure {
 	padding: 0;

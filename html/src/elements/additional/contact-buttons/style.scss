@@ -1,0 +1,357 @@
+
+.popups--contact-buttons {
+    width: 4.5rem;
+    height: 4.5rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 112
+}
+
+.popups--contact-buttons * {
+    user-select: none
+}
+
+.popups--contact-buttons--switch {
+    align-items: center;
+    background-color: #000;
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.popups--contact-buttons--static {
+    //-webkit-animation: show-stat6sinfinite;
+    align-items: center;
+    //animation: show-stat6sinfinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popups--contact-buttons--static-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    display: inline
+}
+
+.popups--contact-buttons--static-caption {
+    color: #fff;
+    font-family: Arial,sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: .7rem;
+    margin: 0
+}
+
+.popups--contact-buttons--pulsation {
+    background-color: #000;
+    border-radius: 3rem;
+    position: absolute;
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+    left: -.5rem;
+    top: -.5rem;
+    transform:scale(0);
+    z-index: -1
+}
+
+.popups--contact-buttons--pulsation:nth-of-type(2n) {
+    animation-delay: .5s
+}
+
+// .popups--contact-buttons--pulsation.messenger-stop {
+.popups--contact-buttons.active .popups--contact-buttons--pulsation {
+    animation: none
+}
+
+.popups--contact-buttons--icons {
+    //animation: show-icons6sinfinite;
+    //background-color: #fff;
+    border-radius: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    position: absolute;
+    width: 3rem
+}
+
+.popups--contact-buttons--icons-line {
+    //-webkit-animation: icon-change6sinfinite;
+    //-webkit-animation-delay: 0s;
+    -webkit-transform: translateX(2rem);
+    //animation: icon-change6sinfinite;
+    //animation-delay: 0s;
+    display: flex;
+    height: 1.5rem;
+    left: .8rem;
+    position: absolute;
+    top: .7rem;
+    transform: translateX(2rem);
+    transition: cubic-bezier(.13,1.49,.14,-.4)
+}
+
+.popups--contact-buttons--icons-line img {
+    width: 2rem;
+    height: 2rem
+}
+
+// .popups--contact-buttons--icons-line.messenger-stop {
+.popups--contact-buttons.active .popups--contact-buttons--icons-line {
+    animation-play-state: paused
+}
+
+.popups--contact-buttons--icon {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    margin: 0 3rem 0 0;
+    user-select: none
+}
+
+// .popups--contact-buttons--icons.messenger-hide,
+// .popups--contact-buttons--static.messenger-hide {
+.popups--contact-buttons.active .popups--contact-buttons--icons,
+.popups--contact-buttons.active .popups--contact-buttons--static {
+    display: none
+}
+
+.popups--contact-buttons--close-icon:first-of-type {
+    margin-left: 0
+}
+
+.popups--contact-buttons--close-icon {
+    fill: var(--bg);
+    transform: rotate(180deg) scale(0);
+    transition: all .12s ease-in
+}
+
+// .popups--contact-buttons--close.messenger-show {
+.popups--contact-buttons.active .messenger-hide.popups--contact-buttons--close {
+    line-height: 0;
+    position: absolute;
+    top: 42%;
+    left: 42%
+}
+
+// .popups--contact-buttons--close.messenger-show .popups--contact-buttons--close-icon {
+.popups--contact-buttons.active .popups--contact-buttons--close .popups--contact-buttons--close-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+    transform: rotate(0deg) scale(1)
+}
+
+.popups--contact-buttons--block {
+    -webkit-transform: scale(0);
+    -webkit-transform-origin: 80% 105%;
+    align-items: flex-start;
+    background-color: rgba(255,255,255,.9);
+    box-shadow: 0 0 1rem 1.6rem rgba(0,0,0,.1);
+    border-radius: .45rem;
+    bottom: 5.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    padding: 1.45rem;
+    position: absolute;
+    transform: scale(0);
+    transform-origin: 80% 105%;
+    transition: all .12s ease-out;
+    width: 15rem;
+    z-index: 9
+}
+
+// .popups--contact-buttons--block.messenger-show {
+.popups--contact-buttons.active .popups--contact-buttons--block {
+    transform: scale(1)
+}
+
+.popups--contact-buttons--btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    margin: .5rem 0;
+    line-height: 1.2;
+    text-decoration: none
+}
+
+.popups--contact-buttons--btn:before {
+    background: var(--g2) no-repeat 50%;
+    border-radius: 3rem;
+    content: "";
+    display: block;
+    height: 2.5rem;
+    margin-right: .7rem;
+    width: 2.5rem
+}
+
+.popups--contact-buttons--btn-caption {
+    color: rgba(0,0,0,.87);
+    font-family: Arial,sans-serif;
+    font-size: .85rem;
+    margin: 0
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--call:before {
+    background: var(--g-indigo) url(../svg/btns/phone.svg) no-repeat 50% 50% / 50%;
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--link:before {
+    background: var(--g-green) url(../svg/btns/plus.svg) no-repeat 50% 50% / 50%;
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_facebook:before {
+    background: var(--g-blue) url(../svg/btns/facebook.svg) no-repeat 50% 50% / 50%
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_viber:before {
+    background: #7c529d url(../svg/btns/viber.svg) no-repeat 50%
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_telegram:before {
+    background: #2ca5e0 url(../svg/btns/telegram.svg) no-repeat 43%
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_skype:before {
+    background: #31c4ed url(../svg/btns/skype.svg) no-repeat 45% 45%
+}
+.popups--contact-buttons--btn.popups--contact-buttons--btn_heart:before {
+    background: #dd2a7b url(../svg/btns/heart-full.svg) no-repeat 50% 50% / 70%
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_whatsapp:before {
+    background: #26d367 url(../svg/btns/whatsapp.svg) no-repeat 50% 50%
+}
+
+.popups--contact-buttons--btn.popups--contact-buttons--btn_instagram:before {
+    background: #dd2a7b url(../svg/btns/instagram.svg) no-repeat 50% 50%
+}
+.popups--contact-buttons--btn.popups--contact-buttons--btn_calendar:before {
+    background: #31c4ed url(../svg/btns/calendar.svg) no-repeat 50% 50% / 60%
+}
+.popups--contact-buttons--btn.popups--contact-buttons--btn_vkontakte:before {
+    background: #597ba0 url(../svg/btns/vkontakte.svg) no-repeat 50% 50%
+}
+.popups--contact-buttons--btn.popups--contact-buttons--btn_mail:before {
+    background: #597ba0 url(../svg/btns/mail.svg) no-repeat 50% 50% / 50%
+}
+
+// .popups--contact-buttons--block.messenger-show {
+.popups--contact-buttons.active .popups--contact-buttons--block {
+    display: flex
+}
+
+.messenger-bg {
+    display: block;
+    width: 0;
+    height: 0;
+    background-color: rgba(0,0,0,.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 111;
+    opacity: 0;
+    transition: opacity .3s linear 0s,width 0s linear .3s,height 0s linear .3s
+}
+
+.popups--contact-buttons.active .messenger-bg {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity .3s linear 0s,width 0s linear 0s,height 0s linear 0s
+}
+
+.popups--contact-buttons--block {
+    padding-bottom: .7rem
+}
+
+.service-signature {
+    width: 100%;
+    margin-top: .5rem;
+    padding-top: .3rem;
+    text-align: center;
+    border-top: var(--px) solid #e4e4e4
+}
+
+.service-signature a {
+    font-size: .8rem;
+    text-decoration: none;
+    color: #000!important
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons{
+        width:3rem;
+        height: 3rem;
+        top: auto;
+        right: 1.45rem;
+        bottom: 1.45rem
+    }
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons--switch {
+        width:3rem;
+        height: 3rem
+    }
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons--static-caption {
+        font-size:.4rem
+    }
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons--pulsation {
+        display:none
+    }
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons--close.messenger-show {
+        top:50%;
+        left: 50%;
+        margin: -.45rem 0 0 -.45rem
+    }
+}
+
+@media(max-width: 900px) {
+    .popups--contact-buttons--block {
+        right:0;
+        top: auto;
+        bottom: 4rem;
+        transform-origin: 100% 0
+    }
+}
+
+@media(max-width: 900px) {
+    .messenger-bg {
+        display:none
+    }
+}
+
+.messenger_owner {
+    width: 100%;
+    margin-top: .3rem;
+    padding-top: .7rem;
+    text-align: center;
+    border-top: var(--px) solid #e4e4e4
+}
+
+.messenger_owner p {
+    font-size: .8rem;
+    font-family: open-sans-regular,Arial,sans-serif
+}
+
+.messenger_owner p a {
+    text-decoration: none;
+    color: #000!important
+}

@@ -1,0 +1,46 @@
+.text-block {
+	padding-inline: var(--pd);
+	padding-block: var(--pd);
+	h1,h2,h3,h4,h5,h6 {text-align: center;}
+	figure {
+		padding: 0;
+		margin: 0 auto;
+		text-align: center;
+		img {
+			width: 100%;
+		}
+	}
+	table {
+		border: none;
+		width: 100%;
+		th {
+			background-color: var(--c3);
+			padding: .3rem .6rem;
+		}
+		tr>td {
+			padding: .3rem .6rem;
+		}
+		tr:nth-child(2n)>td {
+			background-color: #eeeeee;
+		}
+	}
+	p {
+		width: 70%;
+		margin-inline:auto;
+		line-height: 180%;
+		letter-spacing: 0.01rem;
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+	ol, ul {
+		width: 70%;
+		margin-inline:auto;
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+	&:empty {
+		display:none;
+	}
+}

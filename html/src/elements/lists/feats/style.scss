@@ -1,0 +1,136 @@
+.features-block {
+	display: flex;
+	flex-direction: column;
+	padding-block: 2rem;
+	>.bt,.bb {
+		vertical-align: middle;
+		width: 100%;
+		img {
+			width: 100%;
+		}
+	}
+	.bb {
+		margin-top: -1px;
+	}
+	>.cont {
+		margin-top: -1px;
+		padding-block: 2rem;
+		padding-inline: var(--pd);
+		background-color: var(--bg2);
+		>.title {
+			margin:0 auto;
+			width: 80%;
+			text-transform: uppercase;
+			text-align: center;
+			font-size: 1.7rem;
+			font-weight: 700;
+			line-height: 160%;
+			color: var(--g5);
+			letter-spacing:0.1rem;
+			font-family: var(--font-header);
+			@media (max-width: 991px) {
+				width: 100%;
+			}
+		}
+		>.text {
+			margin:0 auto;
+			width: 80%;
+			text-align: center;
+			font-size: 1rem;
+			line-height: 110%;
+			font-weight: 400;
+			color: var(--g3);
+		}
+		.list {
+			margin-top: 2rem;
+			display: flex;
+			flex-wrap: wrap;
+			column-gap: 2rem;
+			row-gap: 4rem;
+			.item {
+				margin-top: 2rem;
+				width: calc(100% / 3 - 2rem * 2 / 3);
+				background-color: var(--bg);
+				padding: 2rem 0 0 0;
+				border-radius: 1.5rem;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				box-shadow: var(--shad);
+				position: relative;
+				.bg {
+					width: 100%;
+					height: 7rem;
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						object-position: bottom center;
+						border-bottom-left-radius: 1.5rem;
+						border-bottom-right-radius: 1.5rem;
+					}
+				}
+				.num {
+					display: flex;
+					font-size: 4rem;
+					color: var(--g1);
+					position: absolute;
+					top: -3rem;
+					left: 2rem;
+					z-index: 2;
+				}
+				.ttl {
+					font-weight: 700;
+					font-size: 1.2rem;
+					position: relative;
+					z-index: 2;
+					padding: 2rem 2rem 0 2rem;
+				}
+				.desc {
+					position: relative;
+					z-index: 2;
+					flex-grow: 1;
+					font-size: .8rem;
+					line-height: 160%;
+					color: var(--g4);
+					padding: 0 2rem;
+					a {
+						text-decoration: none;
+						color: var(--c1);
+					}
+				}
+				.btn {
+					position: relative;
+					z-index: 2;
+					display: flex;
+					padding: 0 2rem 2rem 2rem;
+					a {
+						display: inline-flex;
+						gap: 1rem;
+						align-items: center;
+						border: 0.1rem solid #67C15E;
+						border-radius: 1.5rem;
+						padding: .8rem 1.2rem;
+						text-decoration: none;
+						>svg {
+							height: 1rem;
+						}
+						>span {
+							color: #67C15E;
+							font-size: .9rem;
+						}
+						&:hover {
+							background-color: #e5ffe3;
+						}
+					}
+				}
+			}
+			@media (max-width: 767px) {
+				flex-wrap: wrap;
+				.item {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

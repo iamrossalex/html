@@ -1,4 +1,4 @@
-.cart--re-1 {
+.widgets--re-1 {
 	padding-inline: var(--pd);
 	display: flex;
 	flex-direction: column;
@@ -32,6 +32,7 @@
 							width: 100%;
 							aspect-ratio: 16 / 9;
 							object-fit: cover;
+							border-radius: var(--r3);
 						}
 					}
 				}
@@ -165,6 +166,7 @@
 			.price {
 				display: flex;
 				flex-direction: column;
+				border-radius: var(--r3);
 				h2 {
 					margin: 0;
 					padding-bottom: .5rem;
@@ -194,6 +196,7 @@
 			.contact {
 			}
 			.contact-form {
+				border-radius: var(--r3);
 				background-color: var(--bg2);
 				h2 {
 					margin: 0;

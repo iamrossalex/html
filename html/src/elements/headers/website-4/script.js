@@ -1,4 +1,11 @@
 [...document.querySelectorAll(".headers--website-4")].forEach(header => {
+	document.body.addEventListener("scroll", function() {
+		if (document.body.scrollTop > 0) {
+			if (!header.classList.contains("scrolled")) header.classList.add("scrolled");
+		} else {
+			header.classList.remove("scrolled");
+		}
+	});
 	header.bodyCloseMenu = (event) => {
 		if (event.target.closest(".menu")) return;
 		event.stopPropagation();

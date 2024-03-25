@@ -1,4 +1,4 @@
-[...document.querySelectorAll(".cart--re-1")].forEach(cart => {
+[...document.querySelectorAll(".widgets--re-1")].forEach(cart => {
 	// Gallery
 	var gallegy = cart.querySelector(".gallery");
 	var scrollable = gallegy.querySelector('.scroll .cont'),

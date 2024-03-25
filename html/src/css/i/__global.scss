@@ -28,9 +28,15 @@ html {font-size: 16px;}
 
 	--brd: #f0f0f0;
 
-	--gr1: linear-gradient(to bottom, var(--bg) 0%,var(--bg2) 100%);
+	--gr3: linear-gradient(to bottom, var(--bg) 0%,var(--bg2) 100%);
+	--gr2: linear-gradient(to bottom, var(--g3) 0%,var(--g6) 100%);
+	--gr1: linear-gradient(to bottom, var(--c1) 0%,var(--c2) 100%);
 
 	--shad: 0 0 1rem 0.1rem #eeeeee;
+
+	--r1: .5rem;
+	--r2: 1rem;
+	--r3: 1.5rem;
 	
 	--font-header: sans-serif;
 	--font-text: sans-serif;

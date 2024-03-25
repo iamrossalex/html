@@ -33,7 +33,7 @@
 		gap: 2rem;
 		>.item {
 			width: calc(100% / 3 - 2rem * 2 / 3);
-			border-radius: 1.5rem;
+			border-radius: var(--r3);
 			overflow: hidden;
 			aspect-ratio: 1 / 1;
 			position: relative;

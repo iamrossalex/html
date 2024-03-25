@@ -1,14 +1,3 @@
-@keyframes flare-btn {
-	0% {
-	  left: -150%;
-	}
-	80% {
-	  left: -150%;
-	}
-	100% {
-	  left: 150%;
-	}
-}
 .d-100 {animation-delay: .1s;}
 .d-200 {animation-delay: .2s;}
 .d-300 {animation-delay: .3s;}
@@ -30,44 +19,30 @@
 .d-1900 {animation-delay: 1.9s;}
 .d-2000 {animation-delay: 2s;}
 
-.d-200d > *:nth-child(1) {animation-delay: .2s;}
-.d-200d > *:nth-child(2) {animation-delay: .4s;}
-.d-200d > *:nth-child(3) {animation-delay: .6s;}
-.d-200d > *:nth-child(4) {animation-delay: .8s;}
-.d-200d > *:nth-child(5) {animation-delay: 1s;}
-.d-200d > *:nth-child(6) {animation-delay: 1.2s;}
-.d-200d > *:nth-child(7) {animation-delay: 1.4s;}
-.d-200d > *:nth-child(8) {animation-delay: 1.6s;}
-.d-200d > *:nth-child(9) {animation-delay: 1.8s;}
-.d-200d > *:nth-child(10) {animation-delay: 2s;}
-.d-200d > *:nth-child(11) {animation-delay: 2.2s;}
-.d-200d > *:nth-child(12) {animation-delay: 2.4s;}
-
-.d-300d > *:nth-child(1) {animation-delay: .3s;}
-.d-300d > *:nth-child(2) {animation-delay: .6s;}
-.d-300d > *:nth-child(3) {animation-delay: .9s;}
-.d-300d > *:nth-child(4) {animation-delay: 1.2s;}
-.d-300d > *:nth-child(5) {animation-delay: 1.5s;}
-.d-300d > *:nth-child(6) {animation-delay: 1.8s;}
-.d-300d > *:nth-child(7) {animation-delay: 2.1s;}
-.d-300d > *:nth-child(8) {animation-delay: 2.4s;}
-.d-300d > *:nth-child(9) {animation-delay: 2.7s;}
-.d-300d > *:nth-child(10) {animation-delay: 3s;}
-.d-300d > *:nth-child(11) {animation-delay: 3.3s;}
-.d-300d > *:nth-child(12) {animation-delay: 3.6s;}
-
-.d-400d > *:nth-child(1) {animation-delay: .4s;}
-.d-400d > *:nth-child(2) {animation-delay: .8s;}
-.d-400d > *:nth-child(3) {animation-delay: 1.2s;}
-.d-400d > *:nth-child(4) {animation-delay: 1.6s;}
-.d-400d > *:nth-child(5) {animation-delay: 2.0s;}
-.d-400d > *:nth-child(6) {animation-delay: 2.4s;}
-.d-400d > *:nth-child(7) {animation-delay: 2.8s;}
-.d-400d > *:nth-child(8) {animation-delay: 3.2s;}
-.d-400d > *:nth-child(9) {animation-delay: 3.6s;}
-.d-400d > *:nth-child(10) {animation-delay: 4s;}
-.d-400d > *:nth-child(11) {animation-delay: 4.4s;}
-.d-400d > *:nth-child(12) {animation-delay: 4.8s;}
+.d-100d {counter-reset: dly;}
+.d-100d > * {
+	--dly100: calc(var(--index) * 0.1s);
+	counter-increment: dly;
+	animation-delay: var(--dly100);
+}
+.d-200d {counter-reset: dly;}
+.d-200d > * {
+	--dly100: calc(var(--index) * 0.2s);
+	counter-increment: dly;
+	animation-delay: var(--dly100);
+}
+.d-300d {counter-reset: dly;}
+.d-300d > * {
+	--dly100: calc(var(--index) * 0.3s);
+	counter-increment: dly;
+	animation-delay: var(--dly100);
+}
+.d-400d {counter-reset: dly;}
+.d-400d > * {
+	--dly100: calc(var(--index) * 0.4s);
+	counter-increment: dly;
+	animation-delay: var(--dly100);
+}
 
 /********************************************/
 .popups--contact-buttons--pulsation {
@@ -126,7 +101,6 @@
 
 .fadein {
 	opacity: 0;
-	transform: translateY(1.3rem);
 }
 .animate.fadein,
 .animate .fadein {

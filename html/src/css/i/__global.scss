@@ -68,10 +68,30 @@ img,svg {vertical-align:middle;}
 * > p {margin-top: 0; margin-bottom: 1rem;}
 * > p:nth-last-child(1) {margin-bottom: 0;}
 
-html, body {display: flex; margin: 0; padding: 0; width: 100%; height: 100%; overflow-x: hidden;}
+html, body {display: flex; margin: 0; padding: 0; width: 100%; min-height: 100%; overflow-x: hidden;}
 
 a, button, input[type=submit] {outline: none;}
 a {color: var(--c1);}
+
+.scrollable-x {
+	overflow-y: hidden;
+	overflow-x: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+}
+.scrollable-y {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+	&::-webkit-scrollbar {
+		width: 0;
+	}
+}
+
 body {position: relative;display: flex;flex-direction: column;}
 body>main {
 	flex-grow: 1;
